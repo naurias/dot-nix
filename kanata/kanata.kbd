@@ -1,0 +1,60 @@
+;; ============================================================
+;;  kanata.kbd — Home Row Mods + Navigation Layer
+;; ============================================================
+;;
+;;  HOME ROW MODS (tap = letter, hold = modifier)
+;;  ┌───┬───┬───┬───┐           ┌───┬───┬───┬───┐
+;;  │ a │ s │ d │ f │           │ j │ k │ l │ ; │
+;;  │Met│Alt│Sft│Ctl│           │Ctl│Sft│Alt│Met│
+;;  └───┴───┴───┴───┘           └───┴───┴───┴───┘
+;;  (left side)                 (right side)
+;;
+;;  NAVIGATION LAYER  (hold w → arrow keys on j/k/l/;)
+;;  w (held) + j = ←    w (held) + k = ↓
+;;  w (held) + l = ↑    w (held) + ; = →
+;; ============================================================
+
+(defcfg
+  ;; Process keys not in defsrc normally
+  process-unmapped-keys yes
+)
+
+;; ── Source keys we remap ─────────────────────────────────────
+(defsrc
+  w
+  a    s    d    f
+  j    k    l    ;
+)
+
+;; ── Aliases ──────────────────────────────────────────────────
+(defalias
+  ;; Home row mods — left hand
+  ;; tap-hold-release: tap-key  hold-key  tap-timeout(ms)
+  a_m  (tap-hold-release 200 200 a lmet)
+  s_a  (tap-hold-release 200 200 s lalt)
+  d_s  (tap-hold-release 200 200 d lsft)
+  f_c  (tap-hold-release 200 200 f lctl)
+
+  ;; Home row mods — right hand
+  j_c  (tap-hold-release 200 200 j rctl)
+  k_s  (tap-hold-release 200 200 k rsft)
+  l_a  (tap-hold-release 200 200 l ralt)
+  sc_m (tap-hold-release 200 200 ; rmet)
+
+  ;; w held → activate nav layer
+  w_nav (tap-hold-release 200 200 w (layer-while-held nav))
+)
+
+;; ── Base layer ───────────────────────────────────────────────
+(deflayer base
+  @w_nav
+  @a_m  @s_a  @d_s  @f_c
+  @j_c  @k_s  @l_a  @sc_m
+)
+
+;; ── Navigation layer (active while w is held) ────────────────
+(deflayer nav
+  _
+  _     _     _     _
+  left  down  up    right
+)
