@@ -16,6 +16,7 @@ order = [ "default" ]
         "brightness",
         "battery",
         "control-center",
+        "wallpaper",
         "session"
     ]
     font_family = "Ubuntu Sans"
@@ -65,10 +66,23 @@ show_location = false
 
 [theme]
 builtin = "Rosé Pine"
+community_palette = "Oxocarbon"
+mode = "dark"
+source = "builtin"
+wallpaper_scheme = "m3-content"
 
     [theme.templates]
     enable_builtin_templates = false
     enable_community_templates = false
+
+[wallpaper.default]
+path = "/home/nix/Pictures/Wallpapers/wallhaven-vp51z3.jpg"
+
+[wallpaper.last]
+path = "/home/nix/Pictures/Wallpapers/wallhaven-vp51z3.jpg"
+
+[wallpaper.monitors.eDP-1]
+path = "/home/nix/Pictures/Wallpapers/wallhaven-vp51z3.jpg"
 
 [widget.media]
 hide_when_no_media = true
