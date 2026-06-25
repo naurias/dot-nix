@@ -81,6 +81,7 @@ binds {
     Mod+Ctrl+R { reset-window-height; }
     Mod+Ctrl+U { move-workspace-down; }
     Mod+D { spawn "noctalia" "msg" "panel-toggle" "launcher"; }
+    Mod+V { spawn "noctalia" "msg" "panel-toggle" "clipboard"; }
     Mod+Down { focus-window-down; }
     Mod+E { focus-column-right; }
     Mod+Equal { set-column-width "+10%"; }
