@@ -1,0 +1,79 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{rosepine}[2025/10/11 Rosé Pine LaTeX theme]
+
+% Dependencies
+\usepackage{xcolor}
+\usepackage[most]{tcolorbox}
+\usepackage{sectsty}
+\usepackage{listings}
+
+% ------------------------------------------------
+% Rosé Pine Color Palette
+% Official colors from https://rosepinetheme.com/palette/
+% ------------------------------------------------
+\definecolor{rp-base}{HTML}{191724}     % Background
+\definecolor{rp-surface}{HTML}{1f1d2e}  % Slightly lighter surface
+\definecolor{rp-overlay}{HTML}{26233a}  % Borders / cards
+\definecolor{rp-muted}{HTML}{6e6a86}    % Muted text
+\definecolor{rp-subtle}{HTML}{908caa}   % Subtle accents
+\definecolor{rp-text}{HTML}{e0def4}     % Main text
+\definecolor{rp-love}{HTML}{eb6f92}     % Red-pink
+\definecolor{rp-gold}{HTML}{f6c177}     % Yellow-gold
+\definecolor{rp-rose}{HTML}{ebbcba}     % Rose
+\definecolor{rp-pine}{HTML}{31748f}     % Blue-cyan
+\definecolor{rp-foam}{HTML}{9ccfd8}     % Aqua-cyan
+\definecolor{rp-iris}{HTML}{c4a7e7}     % Purple
+\definecolor{rp-highlight}{HTML}{403d52} % Highlight bg
+
+% ------------------------------------------------
+% Background + text
+% ------------------------------------------------
+\pagecolor{rp-base}
+\color{rp-text}
+
+% ------------------------------------------------
+% Section headings (styled by tone, soft hierarchy)
+% ------------------------------------------------
+\sectionfont{\color{rp-love}\Huge\bfseries}
+\subsectionfont{\color{rp-gold}\LARGE\bfseries}
+\subsubsectionfont{\color{rp-foam}\Large\bfseries}
+\paragraphfont{\color{rp-pine}\large\bfseries}
+\subparagraphfont{\color{rp-iris}\normalsize\bfseries}
+
+% ------------------------------------------------
+% Note box (styled like Rosé Pine “highlight” cards)
+% ------------------------------------------------
+\definecolor{note-bg}{HTML}{26233a}
+\definecolor{note-border}{HTML}{9ccfd8}
+
+\newtcolorbox{note}{%
+    colback = note-bg,
+    colframe = note-border,
+    boxrule = 0pt,
+    coltext = rp-text,
+    leftrule = 6pt,
+    arc = 3pt,
+    before upper={%
+        \textbf{\textcolor{rp-foam}{Note}}\par\medskip
+    },
+    top = 4pt,
+    bottom = 4pt,
+    left = 6pt,
+    right = 6pt,
+    enhanced,
+}
+
+% ------------------------------------------------
+% Code listing style (soft pastel Rosé Pine look)
+% ------------------------------------------------
+\lstset{
+  backgroundcolor=\color{rp-surface},
+  basicstyle=\ttfamily\color{rp-text},
+  keywordstyle=\color{rp-iris}\bfseries,
+  stringstyle=\color{rp-gold},
+  commentstyle=\color{rp-muted}\itshape,
+  numberstyle=\tiny\color{rp-subtle},
+  breaklines=true,
+  showstringspaces=false
+}
+

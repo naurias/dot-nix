@@ -1,0 +1,114 @@
+/* === Gruvbox Org HTML Theme === */
+/* Background & text */
+body {
+  background-color: #282828; /* dark bg */
+  color: #ebdbb2;           /* light fg */
+  font-family: "Fira Sans", "Helvetica", "Arial", sans-serif;
+  line-height: 1.6;
+  max-width: 800px;
+  margin: auto;
+  padding: 2em;
+}
+
+/* Links */
+a {
+  color: #83a598;
+  text-decoration: none;
+}
+a:hover {
+  color: #fabd2f;
+  text-decoration: underline;
+}
+
+/* Headings — different colors per level */
+h1 {
+  color: #fb4934; /* red */
+  border-bottom: 2px solid #3c3836;
+  padding-bottom: 0.3em;
+}
+h2 {
+  color: #fabd2f; /* green */
+}
+h3 {
+  color: #b8bb26; /* blue */
+}
+h4 {
+  color: #83a598; /* purple */
+}
+h5 {
+  color: #d3860b; /* orange */
+}
+h6 {
+  color: #928374; /* yellow */
+}
+
+/* Lists */
+ul, ol {
+  margin-left: 1.5em;
+}
+
+/* Blockquotes */
+blockquote {
+  border-left: 3px solid #665c54;
+  padding-left: 1em;
+  color: #d5c4a1;
+  font-style: italic;
+}
+
+/* Code blocks */
+pre {
+  background-color: #1d2021;
+  color: #d5c4a1;
+  padding: 1em;
+  border-radius: 8px;
+  overflow-x: auto;
+}
+code {
+  background-color: #3c3836;
+  color: #ebdbb2;
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+}
+
+/* Tables */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1em 0;
+}
+th {
+  background-color: #3c3836;
+  color: #ebdbb2;
+  padding: 0.5em;
+  text-align: left;
+}
+td {
+  border: 1px solid #504945;
+  padding: 0.5em;
+}
+
+/* Org special blocks */
+div.note {
+  border-left: 4px solid #83a598;
+  padding: 0.5em 1em;
+  margin: 1em 0;
+  background: #32302f;
+}
+
+div.note::before {
+  content: "Note";
+  font-weight: bold;
+  color: #83a598;
+  display: block;
+  margin-bottom: 0.25em;
+  font-size: 0.9em;
+  letter-spacing: 0.05em;
+}
+
+div.warning {
+  border-left: 4px solid #fb4934;
+  padding: 0.5em 1em;
+  margin: 1em 0;
+  background: #3c3836;
+}
+
