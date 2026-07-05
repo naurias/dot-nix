@@ -1,4 +1,7 @@
 
+-- mainMod
+local mainMod = "SUPER"
+
 -- extraConfig
             -- Curves
 hl.curve("expressiveFastSpatial", {
