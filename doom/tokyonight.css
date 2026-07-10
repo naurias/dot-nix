@@ -1,0 +1,137 @@
+/* === Tokyo Night Org HTML Theme === */
+/* Palette reference:
+   base: #1a1b26
+   surface: #1f2335
+   overlay: #292e42
+   muted: #565f89
+   subtle: #a9b1d6
+   text: #c0caf5
+   red: #f7768e
+   yellow: #e0af68
+   orange: #ff9e64
+   blue: #7aa2f7
+   cyan: #7dcfff
+   green: #9ece6a
+   purple: #bb9af7
+*/
+
+/* === Base layout === */
+body {
+  background-color: #1a1b26; /* base */
+  color: #c0caf5;             /* text */
+  font-family: "Fira Sans", "Helvetica", "Arial", sans-serif;
+  line-height: 1.6;
+  max-width: 800px;
+  margin: auto;
+  padding: 2em;
+}
+
+/* === Links === */
+a {
+  color: #7dcfff; /* cyan */
+  text-decoration: none;
+}
+a:hover {
+  color: #e0af68; /* yellow */
+  text-decoration: underline;
+}
+
+/* === Headings === */
+h1 {
+  color: #7aa2f7; /* blue */
+  border-bottom: 2px solid #292e42;
+  padding-bottom: 0.3em;
+}
+h2 {
+  color: #bb9af7; /* purple */
+}
+h3 {
+  color: #7dcfff; /* cyan */
+}
+h4 {
+  color: #ff9e64; /* orange */
+}
+h5 {
+  color: #9ece6a; /* green */
+}
+h6 {
+  color: #565f89; /* muted */
+}
+
+/* === Lists === */
+ul, ol {
+  margin-left: 1.5em;
+}
+
+/* === Blockquotes === */
+blockquote {
+  border-left: 3px solid #565f89;
+  padding-left: 1em;
+  color: #a9b1d6;
+  font-style: italic;
+}
+
+/* === Code blocks === */
+pre {
+  background-color: #1f2335; /* surface */
+  color: #c0caf5;            /* text */
+  padding: 1em;
+  border-radius: 8px;
+  overflow-x: auto;
+}
+code {
+  background-color: #292e42; /* overlay */
+  color: #e0af68;            /* yellow accent */
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+}
+
+/* === Tables === */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1em 0;
+}
+th {
+  background-color: #292e42; /* overlay */
+  color: #c0caf5;
+  padding: 0.5em;
+  text-align: left;
+}
+td {
+  border: 1px solid #565f89;
+  padding: 0.5em;
+}
+
+/* === Org special blocks === */
+div.note {
+  border-left: 4px solid #7dcfff; /* cyan */
+  padding: 0.5em 1em;
+  margin: 1em 0;
+  background: #1f2335; /* surface */
+}
+div.note::before {
+  content: "Note";
+  font-weight: bold;
+  color: #7dcfff;
+  display: block;
+  margin-bottom: 0.25em;
+  font-size: 0.9em;
+  letter-spacing: 0.05em;
+}
+
+div.warning {
+  border-left: 4px solid #f7768e; /* red */
+  padding: 0.5em 1em;
+  margin: 1em 0;
+  background: #292e42; /* overlay */
+}
+div.warning::before {
+  content: "Warning";
+  font-weight: bold;
+  color: #f7768e;
+  display: block;
+  margin-bottom: 0.25em;
+  font-size: 0.9em;
+  letter-spacing: 0.05em;
+}

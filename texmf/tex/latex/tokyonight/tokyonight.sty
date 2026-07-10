@@ -1,0 +1,79 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{tokyonight}[2026/07/10 Tokyo Night LaTeX theme]
+
+% Dependencies
+\usepackage{xcolor}
+\usepackage[most]{tcolorbox}
+\usepackage{sectsty}
+\usepackage{listings}
+
+% ------------------------------------------------
+% Tokyo Night Color Palette
+% Based on the popular "Tokyo Night" Neovim/editor theme
+% ------------------------------------------------
+\definecolor{tn-base}{HTML}{1a1b26}      % Background
+\definecolor{tn-surface}{HTML}{1f2335}   % Slightly lighter surface
+\definecolor{tn-overlay}{HTML}{292e42}   % Borders / cards
+\definecolor{tn-muted}{HTML}{565f89}     % Muted text (comments)
+\definecolor{tn-subtle}{HTML}{a9b1d6}    % Subtle accents
+\definecolor{tn-text}{HTML}{c0caf5}      % Main text
+\definecolor{tn-red}{HTML}{f7768e}       % Red (errors/love)
+\definecolor{tn-yellow}{HTML}{e0af68}    % Yellow-gold
+\definecolor{tn-orange}{HTML}{ff9e64}    % Orange
+\definecolor{tn-blue}{HTML}{7aa2f7}      % Blue
+\definecolor{tn-cyan}{HTML}{7dcfff}      % Cyan
+\definecolor{tn-green}{HTML}{9ece6a}     % Green
+\definecolor{tn-purple}{HTML}{bb9af7}    % Purple
+\definecolor{tn-highlight}{HTML}{292e42} % Highlight bg
+
+% ------------------------------------------------
+% Background + text
+% ------------------------------------------------
+\pagecolor{tn-base}
+\color{tn-text}
+
+% ------------------------------------------------
+% Section headings (styled by tone, soft hierarchy)
+% ------------------------------------------------
+\sectionfont{\color{tn-blue}\Huge\bfseries}
+\subsectionfont{\color{tn-purple}\LARGE\bfseries}
+\subsubsectionfont{\color{tn-cyan}\Large\bfseries}
+\paragraphfont{\color{tn-orange}\large\bfseries}
+\subparagraphfont{\color{tn-green}\normalsize\bfseries}
+
+% ------------------------------------------------
+% Note box (styled like Tokyo Night "highlight" cards)
+% ------------------------------------------------
+\definecolor{note-bg}{HTML}{1f2335}
+\definecolor{note-border}{HTML}{7aa2f7}
+
+\newtcolorbox{note}{%
+    colback = note-bg,
+    colframe = note-border,
+    boxrule = 0pt,
+    coltext = tn-text,
+    leftrule = 6pt,
+    arc = 3pt,
+    before upper={%
+        \textbf{\textcolor{tn-cyan}{Note}}\par\medskip
+    },
+    top = 4pt,
+    bottom = 4pt,
+    left = 6pt,
+    right = 6pt,
+    enhanced,
+}
+
+% ------------------------------------------------
+% Code listing style (Tokyo Night editor look)
+% ------------------------------------------------
+\lstset{
+  backgroundcolor=\color{tn-surface},
+  basicstyle=\ttfamily\color{tn-text},
+  keywordstyle=\color{tn-purple}\bfseries,
+  stringstyle=\color{tn-green},
+  commentstyle=\color{tn-muted}\itshape,
+  numberstyle=\tiny\color{tn-subtle},
+  breaklines=true,
+  showstringspaces=false
+}

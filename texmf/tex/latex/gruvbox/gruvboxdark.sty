@@ -1,0 +1,79 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{gruvboxdark}[2026/07/11 Gruvbox Dark LaTeX theme]
+
+% Dependencies
+\usepackage{xcolor}
+\usepackage[most]{tcolorbox}
+\usepackage{sectsty}
+\usepackage{listings}
+
+% ------------------------------------------------
+% Gruvbox Dark Color Palette
+% Based on the popular "Gruvbox" (dark, medium contrast) theme
+% ------------------------------------------------
+\definecolor{gb-base}{HTML}{282828}      % Background
+\definecolor{gb-surface}{HTML}{32302f}   % Slightly lighter surface
+\definecolor{gb-overlay}{HTML}{504945}   % Borders / cards
+\definecolor{gb-muted}{HTML}{928374}     % Muted text (gray)
+\definecolor{gb-subtle}{HTML}{a89984}    % Subtle accents (fg4)
+\definecolor{gb-text}{HTML}{ebdbb2}      % Main text (fg1)
+\definecolor{gb-red}{HTML}{fb4934}       % Red (bright)
+\definecolor{gb-yellow}{HTML}{fabd2f}    % Yellow (bright)
+\definecolor{gb-orange}{HTML}{fe8019}    % Orange (bright)
+\definecolor{gb-blue}{HTML}{83a598}      % Blue (bright)
+\definecolor{gb-aqua}{HTML}{8ec07c}      % Aqua/cyan (bright)
+\definecolor{gb-green}{HTML}{b8bb26}     % Green (bright)
+\definecolor{gb-purple}{HTML}{d3869b}    % Purple (bright)
+\definecolor{gb-highlight}{HTML}{3c3836} % Highlight bg
+
+% ------------------------------------------------
+% Background + text
+% ------------------------------------------------
+\pagecolor{gb-base}
+\color{gb-text}
+
+% ------------------------------------------------
+% Section headings (styled by tone, soft hierarchy)
+% ------------------------------------------------
+\sectionfont{\color{gb-blue}\Huge\bfseries}
+\subsectionfont{\color{gb-purple}\LARGE\bfseries}
+\subsubsectionfont{\color{gb-aqua}\Large\bfseries}
+\paragraphfont{\color{gb-orange}\large\bfseries}
+\subparagraphfont{\color{gb-green}\normalsize\bfseries}
+
+% ------------------------------------------------
+% Note box (styled like Gruvbox "highlight" cards)
+% ------------------------------------------------
+\definecolor{note-bg}{HTML}{32302f}
+\definecolor{note-border}{HTML}{83a598}
+
+\newtcolorbox{note}{%
+    colback = note-bg,
+    colframe = note-border,
+    boxrule = 0pt,
+    coltext = gb-text,
+    leftrule = 6pt,
+    arc = 3pt,
+    before upper={%
+        \textbf{\textcolor{gb-aqua}{Note}}\par\medskip
+    },
+    top = 4pt,
+    bottom = 4pt,
+    left = 6pt,
+    right = 6pt,
+    enhanced,
+}
+
+% ------------------------------------------------
+% Code listing style (Gruvbox editor look)
+% ------------------------------------------------
+\lstset{
+  backgroundcolor=\color{gb-surface},
+  basicstyle=\ttfamily\color{gb-text},
+  keywordstyle=\color{gb-purple}\bfseries,
+  stringstyle=\color{gb-green},
+  commentstyle=\color{gb-muted}\itshape,
+  numberstyle=\tiny\color{gb-subtle},
+  breaklines=true,
+  showstringspaces=false
+}

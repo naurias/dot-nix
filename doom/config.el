@@ -28,7 +28,7 @@
 
 ;; ------------------ THEMING --------------------- ;;
 
-(setq doom-theme 'doom-rose-pine)
+(setq doom-theme 'doom-gruvbox)
 (after! doom-themes
   (setq doom-themes-enable-bold t
         doom-themes-enable-italic t))
@@ -262,44 +262,31 @@
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
 ;;
 
-
-;; Latex Rosepine THEME 
-
+;; Latex Gruvbox Dark THEME
 (after! ox-latex
-  ;; Always load Rosé Pine theme
-  (add-to-list 'org-latex-packages-alist '("" "rosepine"))
-
-  ;; Define Rosé Pine LaTeX class with heading colors
+  (add-to-list 'org-latex-packages-alist '("" "gruvboxdark"))
   (add-to-list 'org-latex-classes
-               '("rosepine-article"
+               '("gruvbox-dark-article"
                  "\\documentclass[11pt]{article}
-\\usepackage{rosepine}"
+\\usepackage{gruvboxdark}"
                  ("\\section{%s}" . "\\section*{%s}")
                  ("\\subsection{%s}" . "\\subsection*{%s}")
                  ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
                  ("\\paragraph{%s}" . "\\paragraph*{%s}")
                  ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+  (setq org-latex-default-class "gruvbox-dark-article"))
 
-  ;; Default export class
-  (setq org-latex-default-class "rosepine-article"))
-
-
-;; HTML THEMING 
-
-;;(after! org
-;;  (setq org-html-head
-;;        (concat
-;;         "<link rel=\"stylesheet\" type=\"text/css\" href=\"file://"
-;;         (expand-file-name "~/.config/doom/rosepine.css")
-;;         "\" />")))
+;; HTML THEMING (Org export)
 (after! org
   (setq org-html-head
         (concat
          "<style type=\"text/css\">\n"
          (with-temp-buffer
-           (insert-file-contents (expand-file-name "~/.config/doom/rosepine.css"))
+           (insert-file-contents (expand-file-name "~/.config/doom/gruvbox-dark.css"))
            (buffer-string))
          "\n</style>")))
+
+
 ;;   (after! PACKAGE
 ;;     (setq x y))
 ;;
