@@ -220,6 +220,7 @@ end)
 
 hl.bind("SUPER + RETURN", (hl.dsp.exec_cmd("kitty")))
 hl.bind("SUPER + D", (hl.dsp.exec_cmd("noctalia msg panel-toggle launcher")))
+hl.bind("SUPER + C", (hl.dsp.exec_cmd("noctalia msg panel-toggle clipboard")))
 hl.bind("SUPER + W", (hl.dsp.window.close()))
 hl.bind("SUPER + SHIFT + W", (hl.dsp.exec_cmd("hyprshutdown")))
 hl.bind("SUPER + Tab", (hl.dsp.window.cycle_next()))
