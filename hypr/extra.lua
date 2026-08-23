@@ -181,7 +181,6 @@ hl.bind("SUPER + F", hl.dsp.window.fullscreen({ mode = "fullscreen", action = "t
     { description = "Window: Fullscreen" })
 hl.bind("SUPER + SHIFT + F", hl.dsp.window.fullscreen_state({ internal = 0, client = 2, action = "toggle" }),
     { description = "Window: Fullscreen spoof" })
-hl.bind("SUPER + P", hl.dsp.window.pin(), { description = "Window: Pin" })
 
 
 
@@ -189,34 +188,10 @@ for i = 1, 10 do
 	local key = i % 10
 	hl.bind(mainMod .. " + " .. key, hl.dsp.focus({ workspace = i }))
 	hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
+	hl.bind(mainMod .. " + ALT + " .. key, hl.dsp.window.move({ workspace = i, follow = false }))
 end
 
--- Switch to a submap called `resize`.
-hl.bind("SUPER + R", hl.dsp.submap("resize"))
-hl.bind("SUPER + ALT + R", hl.dsp.submap ("move"))
--- Start a submap called "resize".
-hl.define_submap("resize", function()
 
-    -- Set repeating binds for resizing the active window.
-    hl.bind("right", hl.dsp.window.resize({ x = 10, y = 0, relative = true}), { repeating = true })
-    hl.bind("left", hl.dsp.window.resize({ x = -10, y = 0, relative = true}), { repeating = true })
-    hl.bind("up", hl.dsp.window.resize({ x = 0, y = 10, relative = true}), { repeating = true })
-    hl.bind("down", hl.dsp.window.resize({ x = 0, y = -10, relative = true}), { repeating = true })
-
-    -- Use `reset` to go back to the global submap
-    hl.bind("escape", hl.dsp.submap("reset"))
-
-end)
-
-hl.define_submap("move", function()
-    hl.bind("right", hl.dsp.window.move({ x = 10, y = 0, relative = true}), { repeating = true})
-    hl.bind("left", hl.dsp.window.move({ x = -10, y = 0, relative = true}), { repeating = true})
-    hl.bind("up", hl.dsp.window.move({ x = 0, y = -10, relative = true}), { repeating = true})
-    hl.bind("down", hl.dsp.window.move({ x = 0, y = 10, relative = true}), { repeating = true})
-
-
-    hl.bind("escape", hl.dsp.submap("reset"))
-end)
 
 hl.bind("SUPER + RETURN", (hl.dsp.exec_cmd("kitty")))
 hl.bind("SUPER + D", (hl.dsp.exec_cmd("noctalia msg panel-toggle launcher")))
@@ -232,9 +207,30 @@ hl.bind("SUPER + V", hl.dsp.workspace.toggle_special("magic"))
 hl.bind("SUPER + G", hl.dsp.group.toggle())
 hl.bind("SUPER + period", hl.dsp.group.next())
 hl.bind("SUPER + comma", hl.dsp.group.prev())
-hl.bind("SUPER + BracketLeft", hl.dsp.layout("swapcol l"))
-hl.bind("SUPER + BracketRight", hl.dsp.layout("swapcol r"))
--- Bind SUPER + P to toggle a pinned window
+
+
+hl.bind("SUPER + BracketLeft", hl.dsp.layout("consume"))
+hl.bind("SUPER + BracketRight", hl.dsp.layout("expel"))
+
+hl.bind("SUPER + SHIFT + BracketLeft", hl.dsp.layout("swapcol l"))
+hl.bind("SUPER + SHIFT + BracketRight", hl.dsp.layout("swapcol r"))
+
+
+
+hl.bind("SUPER + CONTROL + SHIFT + RIGHT", hl.dsp.window.move({ workspace = "r+1" }))
+hl.bind("SUPER + CONTROL + SHIFT + LEFT", hl.dsp.window.move({ workspace = "r-1" }))
+hl.bind("SUPER + CONTROL + RIGHT", hl.dsp.focus({ workspace = "r+1" }))
+hl.bind("SUPER + CONTROL + LEFT", hl.dsp.focus({ workspace = "r-1" }))
+
+hl.bind("SUPER + SHIFT + Q", move_window("u", 30))
+hl.bind("SUPER + SHIFT + E", move_window("d", 30))
+hl.bind("SUPER + Q", hl.dsp.focus({ direction = "up" }))
+hl.bind("SUPER + E", hl.dsp.focus({ direction = "down" }))
+hl.bind("SUPER + B", hl.dsp.layout("promote"))
+
+
+
+-- Bind SUPER + T to toggle a pinned window
 hl.bind("SUPER + T", function()
     local w = hl.get_active_window()
     if w ~= nil then
@@ -248,7 +244,7 @@ end)
 
 
 
-hl.bind("SUPER + B", function ()
+hl.bind("SUPER + O", function ()
     local layouts     = { "scrolling", "master" }
     local workspace   = hl.get_active_workspace()
 	if hl.get_active_special_workspace() then
@@ -316,3 +312,26 @@ hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO
     { locked = true, repeating = true })
 hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%-"),
     { locked = true, repeating = true })
+
+
+-- Start a submap called "resize".
+hl.bind("SUPER + R", hl.dsp.submap("resize"))
+
+hl.define_submap("resize", function()
+	-- Set repeating binds for resizing the active window.
+	hl.bind("right", hl.dsp.window.resize({ x = 10, y = 0, relative = true }), { repeating = true })
+	hl.bind("CTRL + right", hl.dsp.window.resize({ x = 900, y = 0, relative = true }), { repeating = true })
+	hl.bind("left", hl.dsp.window.resize({ x = -10, y = 0, relative = true }), { repeating = true })
+	hl.bind("CTRL + left", hl.dsp.window.resize({ x = -900, y = 0, relative = true }), { repeating = true })
+	hl.bind("up", hl.dsp.window.resize({ x = 0, y = 10, relative = true }), { repeating = true })
+	hl.bind("CTRL + up", hl.dsp.window.resize({ x = 0, y = 300, relative = true }), { repeating = true })
+	hl.bind("down", hl.dsp.window.resize({ x = 0, y = -10, relative = true }), { repeating = true })
+	hl.bind("CTRL + down", hl.dsp.window.resize({ x = 0, y = -300, relative = true }), { repeating = true })
+
+	hl.bind("SHIFT + right", hl.dsp.window.move({ x = 10, y = 0, relative = true }), { repeating = true })
+	hl.bind("SHIFT + left", hl.dsp.window.move({ x = -10, y = 0, relative = true }), { repeating = true })
+	hl.bind("SHIFT + up", hl.dsp.window.move({ x = 0, y = -10, relative = true }), { repeating = true })
+	hl.bind("SHIFT + down", hl.dsp.window.move({ x = 0, y = 10, relative = true }), { repeating = true })
+	-- Use `reset` to go back to the global submap
+	hl.bind("escape", hl.dsp.submap("reset"))
+end)
