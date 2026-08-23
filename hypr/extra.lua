@@ -1,6 +1,17 @@
 
 -- mainMod
 local mainMod = "SUPER"
+-- local variables 
+local move_window = function(dir, pix)
+	local lut = { l = { -1, 0 }, r = { 1, 0 }, u = { 0, -1 }, d = { 0, 1 } }
+	lut.left, lut.right, lut.up, lut.down = lut.l, lut.r, lut.u, lut.d
+	local m = lut[dir]
+	return function()
+		local args = hl.get_active_window().floating and { x = m[1] * pix, y = m[2] * pix, relative = true }
+			or { direction = dir }
+		hl.dispatch(hl.dsp.window.move(args))
+	end
+end
 
 -- extraConfig
             -- Curves
@@ -222,10 +233,10 @@ hl.bind("SUPER + CONTROL + SHIFT + LEFT", hl.dsp.window.move({ workspace = "r-1"
 hl.bind("SUPER + CONTROL + RIGHT", hl.dsp.focus({ workspace = "r+1" }))
 hl.bind("SUPER + CONTROL + LEFT", hl.dsp.focus({ workspace = "r-1" }))
 
-hl.bind("SUPER + SHIFT + Q", move_window("u", 30))
-hl.bind("SUPER + SHIFT + E", move_window("d", 30))
-hl.bind("SUPER + Q", hl.dsp.focus({ direction = "up" }))
-hl.bind("SUPER + E", hl.dsp.focus({ direction = "down" }))
+hl.bind("SUPER + SHIFT + Q", move_window("l", 30))
+hl.bind("SUPER + SHIFT + E", move_window("r", 30))
+hl.bind("SUPER + Q", hl.dsp.focus({ direction = "left" }))
+hl.bind("SUPER + E", hl.dsp.focus({ direction = "right" }))
 hl.bind("SUPER + B", hl.dsp.layout("promote"))
 
 
