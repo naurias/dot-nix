@@ -233,10 +233,16 @@ hl.bind("SUPER + CONTROL + SHIFT + LEFT", hl.dsp.window.move({ workspace = "r-1"
 hl.bind("SUPER + CONTROL + RIGHT", hl.dsp.focus({ workspace = "r+1" }))
 hl.bind("SUPER + CONTROL + LEFT", hl.dsp.focus({ workspace = "r-1" }))
 
-hl.bind("SUPER + SHIFT + Q", move_window("l", 30))
-hl.bind("SUPER + SHIFT + E", move_window("r", 30))
-hl.bind("SUPER + Q", hl.dsp.focus({ direction = "left" }))
-hl.bind("SUPER + E", hl.dsp.focus({ direction = "right" }))
+hl.bind("SUPER + SHIFT + Q", move_window("u", 30))
+hl.bind("SUPER + SHIFT + E", move_window("d", 30))
+hl.bind("SUPER + Q", hl.dsp.focus({ direction = "up" }))
+hl.bind("SUPER + E", hl.dsp.focus({ direction = "down" }))
+
+hl.bind("SUPER + SHIFT + Z", move_window("l", 30))
+hl.bind("SUPER + SHIFT + X", move_window("r", 30))
+hl.bind("SUPER + Z", hl.dsp.focus({ direction = "left" }))
+hl.bind("SUPER + X", hl.dsp.focus({ direction = "right" }))
+
 hl.bind("SUPER + B", hl.dsp.layout("promote"))
 
 
