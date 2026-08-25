@@ -1,0 +1,163 @@
+/* Gruvbox theme for selimacerbas/markdown-preview.nvim
+   Point custom_css at this file, e.g.:
+     custom_css = "~/.config/nvim/markdown-preview.css",
+   The plugin loads this after its bundled styles, so these rules win.
+   Content is scoped under #content; colors flow through CSS variables
+   on :root (dark, default) and [data-theme="light"]. */
+
+/* ── Gruvbox Dark (default theme) ─────────────────────────────────── */
+:root {
+  --bg: #282828;
+  --panel: #32302f;
+  --stroke: #504945;
+  --fg: #ebdbb2;
+  --fg-muted: #a89984;
+  --link: #8ec07c;
+  --code-bg: #3c3836;
+  --blockquote-border: #504945;
+  --table-border: #504945;
+  --table-row-alt: rgba(235, 219, 178, 0.04);
+  --accent: #fabd2f;
+  --badge-bg: rgba(235, 219, 178, 0.06);
+  --badge-fg: #a89984;
+  --skeleton: rgba(235, 219, 178, 0.05);
+  --skeleton-shine: rgba(235, 219, 178, 0.1);
+  --scroll-thumb: rgba(168, 153, 132, 0.4);
+  --scroll-thumb-hover: rgba(168, 153, 132, 0.65);
+
+  /* GitHub-style callouts */
+  --color-note: #83a598;
+  --color-tip: #b8bb26;
+  --color-warning: #fabd2f;
+  --color-caution: #fb4934;
+  --color-important: #d3869b;
+
+  /* Heading accents (used as left-border stripe by the plugin;
+     we also apply these to heading text below) */
+  --color-h1: #83a598;
+  --color-h2: #d3869b;
+  --color-h3: #8ec07c;
+  --color-h4: #fe8019;
+  --color-h5: #b8bb26;
+  --color-h6: #928374;
+}
+
+/* ── Gruvbox Light (used only if you toggle light mode in-browser) ── */
+[data-theme="light"] {
+  --bg: #fbf1c7;
+  --panel: #f2e5bc;
+  --stroke: #d5c4a1;
+  --fg: #3c3836;
+  --fg-muted: #7c6f64;
+  --link: #427b58;
+  --code-bg: #ebdbb2;
+  --blockquote-border: #d5c4a1;
+  --table-border: #d5c4a1;
+  --table-row-alt: rgba(60, 56, 54, 0.04);
+  --accent: #b57614;
+  --badge-bg: rgba(60, 56, 54, 0.05);
+  --badge-fg: #7c6f64;
+
+  --color-note: #076678;
+  --color-tip: #79740e;
+  --color-warning: #b57614;
+  --color-caution: #9d0006;
+  --color-important: #8f3f71;
+
+  --color-h1: #076678;
+  --color-h2: #8f3f71;
+  --color-h3: #79740e;
+  --color-h4: #af3a03;
+  --color-h5: #b57614;
+  --color-h6: #7c6f64;
+}
+
+/* ── Font ────────────────────────────────────────────────────────── */
+body,
+#content {
+  font-family: "Ubuntu Sans", "Segoe UI", Arial, freesans, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+/* ── Headings — color the text itself, not just the border stripe ── */
+#content h1 { color: var(--color-h1); }
+#content h2 { color: var(--color-h2); }
+#content h3 { color: var(--color-h3); }
+#content h4 { color: var(--color-h4); }
+#content h5 { color: var(--color-h5); }
+#content h6 { color: var(--color-h6); }
+
+/* ── Emphasis ────────────────────────────────────────────────────── */
+#content strong { color: var(--accent); }
+#content em { color: #fb4934; }
+#content del { color: var(--fg-muted); }
+
+/* ── Links ───────────────────────────────────────────────────────── */
+#content a:hover { color: #fb4934; }
+
+/* ── List marker colors by nesting level ────────────────────────── */
+#content ul li::marker,
+#content ol li::marker {
+  color: var(--accent); /* level 1: yellow */
+}
+#content ul ul li::marker,
+#content ol ul li::marker,
+#content ul ol li::marker,
+#content ol ol li::marker {
+  color: #8ec07c; /* level 2: aqua */
+}
+#content ul ul ul li::marker,
+#content ol ul ul li::marker,
+#content ul ol ul li::marker,
+#content ol ol ul li::marker {
+  color: #d3869b; /* level 3+: purple */
+}
+
+/* ── Task list checkboxes ────────────────────────────────────────── */
+#content .task-list-item input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 1.1em;
+  height: 1.1em;
+  border: 2px solid var(--fg-muted);
+  border-radius: 3px;
+  background-color: var(--bg);
+  cursor: pointer;
+  vertical-align: middle;
+  position: relative;
+}
+#content .task-list-item input[type="checkbox"]:hover {
+  border-color: var(--accent);
+}
+#content .task-list-item input[type="checkbox"]:checked {
+  background-color: #83a598;
+  border-color: #83a598;
+}
+#content .task-list-item input[type="checkbox"]:checked::after {
+  content: "✔";
+  position: absolute;
+  top: -2px;
+  left: 1px;
+  font-size: 0.9em;
+  color: var(--bg);
+}
+
+/* ── Blockquote ──────────────────────────────────────────────────── */
+#content blockquote {
+  background: var(--panel);
+  border-radius: 3px;
+}
+
+/* ── Inline code (keep code-block text at default fg) ───────────── */
+#content code {
+  color: #d3869b;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+#content pre code {
+  color: var(--fg);
+}
+
+/* ── Images ──────────────────────────────────────────────────────── */
+#content img {
+  box-shadow: 0 0 10px var(--panel);
+}

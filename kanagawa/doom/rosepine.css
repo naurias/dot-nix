@@ -1,0 +1,137 @@
+/* === Rosé Pine Org HTML Theme === */
+/* Palette reference:
+   base: #191724
+   surface: #1f1d2e
+   overlay: #26233a
+   muted: #6e6a86
+   subtle: #908caa
+   text: #e0def4
+   love: #eb6f92
+   gold: #f6c177
+   rose: #ebbcba
+   pine: #31748f
+   foam: #9ccfd8
+   iris: #c4a7e7
+*/
+
+/* === Base layout === */
+body {
+  background-color: #191724; /* base */
+  color: #e0def4;             /* text */
+  font-family: "Fira Sans", "Helvetica", "Arial", sans-serif;
+  line-height: 1.6;
+  max-width: 800px;
+  margin: auto;
+  padding: 2em;
+}
+
+/* === Links === */
+a {
+  color: #9ccfd8; /* foam */
+  text-decoration: none;
+}
+a:hover {
+  color: #f6c177; /* gold */
+  text-decoration: underline;
+}
+
+/* === Headings === */
+h1 {
+  color: #eb6f92; /* love */
+  border-bottom: 2px solid #26233a;
+  padding-bottom: 0.3em;
+}
+h2 {
+  color: #f6c177; /* gold */
+}
+h3 {
+  color: #31748f; /* pine */
+}
+h4 {
+  color: #9ccfd8; /* foam */
+}
+h5 {
+  color: #c4a7e7; /* iris */
+}
+h6 {
+  color: #6e6a86; /* muted */
+}
+
+/* === Lists === */
+ul, ol {
+  margin-left: 1.5em;
+}
+
+/* === Blockquotes === */
+blockquote {
+  border-left: 3px solid #6e6a86;
+  padding-left: 1em;
+  color: #908caa;
+  font-style: italic;
+}
+
+/* === Code blocks === */
+pre {
+  background-color: #1f1d2e; /* surface */
+  color: #e0def4;            /* text */
+  padding: 1em;
+  border-radius: 8px;
+  overflow-x: auto;
+}
+code {
+  background-color: #26233a; /* overlay */
+  color: #f6c177;            /* gold accent */
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+}
+
+/* === Tables === */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1em 0;
+}
+th {
+  background-color: #26233a; /* overlay */
+  color: #e0def4;
+  padding: 0.5em;
+  text-align: left;
+}
+td {
+  border: 1px solid #6e6a86;
+  padding: 0.5em;
+}
+
+/* === Org special blocks === */
+div.note {
+  border-left: 4px solid #9ccfd8; /* foam */
+  padding: 0.5em 1em;
+  margin: 1em 0;
+  background: #1f1d2e; /* surface */
+}
+div.note::before {
+  content: "Note";
+  font-weight: bold;
+  color: #9ccfd8;
+  display: block;
+  margin-bottom: 0.25em;
+  font-size: 0.9em;
+  letter-spacing: 0.05em;
+}
+
+div.warning {
+  border-left: 4px solid #eb6f92; /* love */
+  padding: 0.5em 1em;
+  margin: 1em 0;
+  background: #26233a; /* overlay */
+}
+div.warning::before {
+  content: "Warning";
+  font-weight: bold;
+  color: #eb6f92;
+  display: block;
+  margin-bottom: 0.25em;
+  font-size: 0.9em;
+  letter-spacing: 0.05em;
+}
+

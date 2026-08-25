@@ -1,0 +1,148 @@
+/* ── Catppuccin theme for markdown-preview.nvim ──────────────────
+   Dark (default):   data-theme unset or not "light"
+   Light (Latte):    data-theme="light"
+*/
+
+:root {
+  --bg: #1e1e2e;
+  --panel: #313244;
+  --stroke: #45475a;
+  --fg: #cdd6f4;
+  --fg-muted: #6c7086;
+  --link: #89b4fa;
+  --code-bg: #313244;
+  --blockquote-border: #45475a;
+  --table-border: #45475a;
+  --table-row-alt: rgba(205, 214, 244, 0.04);
+  --accent: #f9e2af;
+  --badge-bg: rgba(205, 214, 244, 0.06);
+  --badge-fg: #6c7086;
+  --skeleton: rgba(205, 214, 244, 0.05);
+  --skeleton-shine: rgba(205, 214, 244, 0.1);
+  --scroll-thumb: rgba(108, 112, 134, 0.4);
+  --scroll-thumb-hover: rgba(108, 112, 134, 0.65);
+  --color-note: #89b4fa;
+  --color-tip: #a6e3a1;
+  --color-warning: #f9e2af;
+  --color-caution: #f38ba8;
+  --color-important: #cba6f7;
+  --color-h1: #f38ba8;
+  --color-h2: #f9e2af;
+  --color-h3: #a6e3a1;
+  --color-h4: #89b4fa;
+  --color-h5: #cba6f7;
+  --color-h6: #6c7086;
+}
+
+[data-theme="light"] {
+  --bg: #eff1f5;
+  --panel: #ccd0da;
+  --stroke: #bcc0cc;
+  --fg: #4c4f69;
+  --fg-muted: #6c6f85;
+  --link: #1e66f5;
+  --code-bg: #ccd0da;
+  --blockquote-border: #bcc0cc;
+  --table-border: #bcc0cc;
+  --table-row-alt: rgba(76, 79, 105, 0.04);
+  --accent: #df8e1d;
+  --badge-bg: rgba(76, 79, 105, 0.05);
+  --badge-fg: #6c6f85;
+  --skeleton: rgba(76, 79, 105, 0.05);
+  --skeleton-shine: rgba(76, 79, 105, 0.1);
+  --scroll-thumb: rgba(108, 111, 133, 0.4);
+  --scroll-thumb-hover: rgba(108, 111, 133, 0.65);
+  --color-note: #1e66f5;
+  --color-tip: #40a02b;
+  --color-warning: #df8e1d;
+  --color-caution: #d20f39;
+  --color-important: #8839ef;
+  --color-h1: #d20f39;
+  --color-h2: #df8e1d;
+  --color-h3: #40a02b;
+  --color-h4: #1e66f5;
+  --color-h5: #8839ef;
+  --color-h6: #6c6f85;
+}
+
+/* ── Shared styles (same for all themes) ──────────────────────── */
+body,
+#content {
+  font-family: "Ubuntu Sans", "Segoe UI", Arial, freesans, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#content h1 { color: var(--color-h1); }
+#content h2 { color: var(--color-h2); }
+#content h3 { color: var(--color-h3); }
+#content h4 { color: var(--color-h4); }
+#content h5 { color: var(--color-h5); }
+#content h6 { color: var(--color-h6); }
+
+#content strong { color: var(--accent); }
+#content em { color: #fb4934; }
+#content del { color: var(--fg-muted); }
+
+#content a:hover { color: #fb4934; }
+
+#content ul li::marker,
+#content ol li::marker {
+  color: var(--accent);
+}
+#content ul ul li::marker,
+#content ol ul li::marker,
+#content ul ol li::marker,
+#content ol ol li::marker {
+  color: #8ec07c;
+}
+#content ul ul ul li::marker,
+#content ol ul ul li::marker,
+#content ul ol ul li::marker,
+#content ol ol ul li::marker {
+  color: #d3869b;
+}
+
+#content .task-list-item input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 1.1em;
+  height: 1.1em;
+  border: 2px solid var(--fg-muted);
+  border-radius: 3px;
+  background-color: var(--bg);
+  cursor: pointer;
+  vertical-align: middle;
+  position: relative;
+}
+#content .task-list-item input[type="checkbox"]:hover {
+  border-color: var(--accent);
+}
+#content .task-list-item input[type="checkbox"]:checked {
+  background-color: #83a598;
+  border-color: #83a598;
+}
+#content .task-list-item input[type="checkbox"]:checked::after {
+  content: "✔";
+  position: absolute;
+  top: -2px;
+  left: 1px;
+  font-size: 0.9em;
+  color: var(--bg);
+}
+
+#content blockquote {
+  background: var(--panel);
+  border-radius: 3px;
+}
+
+#content code {
+  color: #d3869b;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+#content pre code {
+  color: var(--fg);
+}
+
+#content img {
+  box-shadow: 0 0 10px var(--panel);
+}

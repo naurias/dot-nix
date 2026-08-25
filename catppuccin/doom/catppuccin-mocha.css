@@ -1,0 +1,137 @@
+/* === Catppuccin Mocha Org HTML Theme === */
+/* Palette reference:
+   base: #1E1E2E
+   surface: #313244
+   overlay: #45475A
+   muted: #6C7086
+   subtle: #9399B2
+   text: #CDD6F4
+   red: #F38BA8
+   yellow: #F9E2AF
+   orange: #FAB387
+   blue: #89B4FA
+   aqua: #94E2D5
+   green: #A6E3A1
+   purple: #CBA6F7
+*/
+
+/* === Base layout === */
+body {
+  background-color: #1E1E2E; /* base */
+  color: #CDD6F4;             /* text */
+  font-family: "Fira Sans", "Helvetica", "Arial", sans-serif;
+  line-height: 1.6;
+  max-width: 800px;
+  margin: auto;
+  padding: 2em;
+}
+
+/* === Links === */
+a {
+  color: #94E2D5; /* aqua */
+  text-decoration: none;
+}
+a:hover {
+  color: #F9E2AF; /* yellow */
+  text-decoration: underline;
+}
+
+/* === Headings === */
+h1 {
+  color: #89B4FA; /* blue */
+  border-bottom: 2px solid #45475A;
+  padding-bottom: 0.3em;
+}
+h2 {
+  color: #CBA6F7; /* purple */
+}
+h3 {
+  color: #94E2D5; /* aqua */
+}
+h4 {
+  color: #FAB387; /* orange */
+}
+h5 {
+  color: #A6E3A1; /* green */
+}
+h6 {
+  color: #6C7086; /* muted */
+}
+
+/* === Lists === */
+ul, ol {
+  margin-left: 1.5em;
+}
+
+/* === Blockquotes === */
+blockquote {
+  border-left: 3px solid #6C7086;
+  padding-left: 1em;
+  color: #9399B2;
+  font-style: italic;
+}
+
+/* === Code blocks === */
+pre {
+  background-color: #313244; /* surface */
+  color: #CDD6F4;            /* text */
+  padding: 1em;
+  border-radius: 8px;
+  overflow-x: auto;
+}
+code {
+  background-color: #45475A; /* overlay */
+  color: #F9E2AF;            /* yellow accent */
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+}
+
+/* === Tables === */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1em 0;
+}
+th {
+  background-color: #45475A; /* overlay */
+  color: #CDD6F4;
+  padding: 0.5em;
+  text-align: left;
+}
+td {
+  border: 1px solid #6C7086;
+  padding: 0.5em;
+}
+
+/* === Org special blocks === */
+div.note {
+  border-left: 4px solid #94E2D5; /* aqua */
+  padding: 0.5em 1em;
+  margin: 1em 0;
+  background: #313244; /* surface */
+}
+div.note::before {
+  content: "Note";
+  font-weight: bold;
+  color: #94E2D5;
+  display: block;
+  margin-bottom: 0.25em;
+  font-size: 0.9em;
+  letter-spacing: 0.05em;
+}
+
+div.warning {
+  border-left: 4px solid #F38BA8; /* red */
+  padding: 0.5em 1em;
+  margin: 1em 0;
+  background: #45475A; /* overlay */
+}
+div.warning::before {
+  content: "Warning";
+  font-weight: bold;
+  color: #F38BA8;
+  display: block;
+  margin-bottom: 0.25em;
+  font-size: 0.9em;
+  letter-spacing: 0.05em;
+}

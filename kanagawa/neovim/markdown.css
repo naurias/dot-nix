@@ -1,0 +1,148 @@
+/* ── Kanagawa theme for markdown-preview.nvim ────────────────────
+   Dark  (default):  data-theme unset or not "light"
+   Light:            data-theme="light"
+*/
+
+:root {
+  --bg: #1f1f28;
+  --panel: #2a2a37;
+  --stroke: #3a3a4a;
+  --fg: #dcd7ba;
+  --fg-muted: #6e6b5e;
+  --link: #7e9cd8;
+  --code-bg: #2a2a37;
+  --blockquote-border: #3a3a4a;
+  --table-border: #3a3a4a;
+  --table-row-alt: rgba(220, 215, 186, 0.04);
+  --accent: #dca561;
+  --badge-bg: rgba(220, 215, 186, 0.06);
+  --badge-fg: #6e6b5e;
+  --skeleton: rgba(220, 215, 186, 0.05);
+  --skeleton-shine: rgba(220, 215, 186, 0.1);
+  --scroll-thumb: rgba(110, 107, 94, 0.4);
+  --scroll-thumb-hover: rgba(110, 107, 94, 0.65);
+  --color-note: #7fb4ca;
+  --color-tip: #98bb6c;
+  --color-warning: #dca561;
+  --color-caution: #e46876;
+  --color-important: #957fb8;
+  --color-h1: #e46876;
+  --color-h2: #dca561;
+  --color-h3: #98bb6c;
+  --color-h4: #7e9cd8;
+  --color-h5: #957fb8;
+  --color-h6: #6e6b5e;
+}
+
+[data-theme="light"] {
+  --bg: #f2ecbc;
+  --panel: #f9f5d7;
+  --stroke: #d9d0a0;
+  --fg: #2d2a2a;
+  --fg-muted: #7a7a5a;
+  --link: #5a7ba0;
+  --code-bg: #f9f5d7;
+  --blockquote-border: #d9d0a0;
+  --table-border: #d9d0a0;
+  --table-row-alt: rgba(45, 42, 42, 0.04);
+  --accent: #b58a4a;
+  --badge-bg: rgba(45, 42, 42, 0.05);
+  --badge-fg: #7a7a5a;
+  --skeleton: rgba(45, 42, 42, 0.05);
+  --skeleton-shine: rgba(45, 42, 42, 0.1);
+  --scroll-thumb: rgba(122, 122, 90, 0.4);
+  --scroll-thumb-hover: rgba(122, 122, 90, 0.65);
+  --color-note: #5a7ba0;
+  --color-tip: #8a9a5a;
+  --color-warning: #b58a4a;
+  --color-caution: #d46a6a;
+  --color-important: #8a6aa0;
+  --color-h1: #d46a6a;
+  --color-h2: #b58a4a;
+  --color-h3: #8a9a5a;
+  --color-h4: #5a7ba0;
+  --color-h5: #8a6aa0;
+  --color-h6: #7a7a5a;
+}
+
+/* ── Shared styles (same for all themes) ──────────────────────── */
+body,
+#content {
+  font-family: "Ubuntu Sans", "Segoe UI", Arial, freesans, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#content h1 { color: var(--color-h1); }
+#content h2 { color: var(--color-h2); }
+#content h3 { color: var(--color-h3); }
+#content h4 { color: var(--color-h4); }
+#content h5 { color: var(--color-h5); }
+#content h6 { color: var(--color-h6); }
+
+#content strong { color: var(--accent); }
+#content em { color: #fb4934; }
+#content del { color: var(--fg-muted); }
+
+#content a:hover { color: #fb4934; }
+
+#content ul li::marker,
+#content ol li::marker {
+  color: var(--accent);
+}
+#content ul ul li::marker,
+#content ol ul li::marker,
+#content ul ol li::marker,
+#content ol ol li::marker {
+  color: #8ec07c;
+}
+#content ul ul ul li::marker,
+#content ol ul ul li::marker,
+#content ul ol ul li::marker,
+#content ol ol ul li::marker {
+  color: #d3869b;
+}
+
+#content .task-list-item input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 1.1em;
+  height: 1.1em;
+  border: 2px solid var(--fg-muted);
+  border-radius: 3px;
+  background-color: var(--bg);
+  cursor: pointer;
+  vertical-align: middle;
+  position: relative;
+}
+#content .task-list-item input[type="checkbox"]:hover {
+  border-color: var(--accent);
+}
+#content .task-list-item input[type="checkbox"]:checked {
+  background-color: #83a598;
+  border-color: #83a598;
+}
+#content .task-list-item input[type="checkbox"]:checked::after {
+  content: "✔";
+  position: absolute;
+  top: -2px;
+  left: 1px;
+  font-size: 0.9em;
+  color: var(--bg);
+}
+
+#content blockquote {
+  background: var(--panel);
+  border-radius: 3px;
+}
+
+#content code {
+  color: #d3869b;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+#content pre code {
+  color: var(--fg);
+}
+
+#content img {
+  box-shadow: 0 0 10px var(--panel);
+}

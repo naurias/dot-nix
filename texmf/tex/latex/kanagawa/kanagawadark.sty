@@ -1,0 +1,79 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{kanagawadark}[2026/08/25 Kanagawa Dark LaTeX theme]
+
+% Dependencies
+\usepackage{xcolor}
+\usepackage[most]{tcolorbox}
+\usepackage{sectsty}
+\usepackage{listings}
+
+% ------------------------------------------------
+% Kanagawa Dark Color Palette
+% Based on the Kanagawa theme by Tommaso Laurenzi
+% ------------------------------------------------
+\definecolor{gb-base}{HTML}{1F1F28}      % Background
+\definecolor{gb-surface}{HTML}{223249}   % Slightly lighter surface
+\definecolor{gb-overlay}{HTML}{54546D}   % Borders / cards
+\definecolor{gb-muted}{HTML}{727169}     % Muted text (gray)
+\definecolor{gb-subtle}{HTML}{C8C093}    % Subtle accents
+\definecolor{gb-text}{HTML}{DCD7BA}      % Main text
+\definecolor{gb-red}{HTML}{C34043}       % Red
+\definecolor{gb-yellow}{HTML}{C0A36E}    % Yellow
+\definecolor{gb-orange}{HTML}{FFA066}    % Orange
+\definecolor{gb-blue}{HTML}{7E9CD8}      % Blue
+\definecolor{gb-aqua}{HTML}{6A9589}      % Aqua/cyan
+\definecolor{gb-green}{HTML}{76946A}     % Green
+\definecolor{gb-purple}{HTML}{957FB8}    % Purple
+\definecolor{gb-highlight}{HTML}{54546D} % Highlight bg
+
+% ------------------------------------------------
+% Background + text
+% ------------------------------------------------
+\pagecolor{gb-base}
+\color{gb-text}
+
+% ------------------------------------------------
+% Section headings (styled by tone, soft hierarchy)
+% ------------------------------------------------
+\sectionfont{\color{gb-blue}\Huge\bfseries}
+\subsectionfont{\color{gb-purple}\LARGE\bfseries}
+\subsubsectionfont{\color{gb-aqua}\Large\bfseries}
+\paragraphfont{\color{gb-orange}\large\bfseries}
+\subparagraphfont{\color{gb-green}\normalsize\bfseries}
+
+% ------------------------------------------------
+% Note box
+% ------------------------------------------------
+\definecolor{note-bg}{HTML}{223249}
+\definecolor{note-border}{HTML}{7E9CD8}
+
+\newtcolorbox{note}{%
+    colback = note-bg,
+    colframe = note-border,
+    boxrule = 0pt,
+    coltext = gb-text,
+    leftrule = 6pt,
+    arc = 3pt,
+    before upper={%
+        \textbf{\textcolor{gb-aqua}{Note}}\par\medskip
+    },
+    top = 4pt,
+    bottom = 4pt,
+    left = 6pt,
+    right = 6pt,
+    enhanced,
+}
+
+% ------------------------------------------------
+% Code listing style
+% ------------------------------------------------
+\lstset{
+  backgroundcolor=\color{gb-surface},
+  basicstyle=\ttfamily\color{gb-text},
+  keywordstyle=\color{gb-purple}\bfseries,
+  stringstyle=\color{gb-green},
+  commentstyle=\color{gb-muted}\itshape,
+  numberstyle=\tiny\color{gb-subtle},
+  breaklines=true,
+  showstringspaces=false
+}
