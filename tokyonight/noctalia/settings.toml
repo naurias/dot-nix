@@ -1,5 +1,37 @@
 config_version = 13
 
+[audio]
+enable_overdrive = true
+
+[bar]
+order = [ "default" ]
+
+    [bar.default]
+    center = [ "media", "active_window" ]
+    end = [
+        "tray",
+        "notifications",
+        "clipboard",
+        "network",
+        "bluetooth",
+        "volume",
+        "brightness",
+        "battery",
+        "control-center",
+        "wallpaper",
+        "session"
+    ]
+    font_family = "Ubuntu Sans"
+    margin_edge = 0
+    margin_ends = 0
+    radius = 0
+    shadow = false
+    start = [ "launcher", "workspaces", "taskbar", "clock", "date", "caffeine", "keyboard_layout" ]
+    thickness = 27
+
+[desktop_widgets]
+enabled = false
+
 [lockscreen_widgets]
 enabled = false
 schema_version = 2
@@ -37,16 +69,45 @@ widget_order = [ "lockscreen-login-box@eDP-1" ]
         show_unlock_hint = true
         show_weather = true
 
+[shell]
+corner_radius_scale = 1.3500000201165676
+font_family = "Ubuntu Sans"
+launch_apps_as_systemd_services = true
+show_location = false
+
+    [shell.panel]
+    launcher_placement = "attached"
+    launcher_session_search = true
+
 [theme]
 builtin = "Tokyo-Night"
-community_palette = "Gruvbox Material"
-custom_palette = "GruvboxMain"
+wallpaper_scheme = "m3-content"
+
+    [theme.templates]
+    enable_builtin_templates = false
+    enable_community_templates = false
+
+[wallpaper.automation]
+order = "alphabetical"
 
 [wallpaper.default]
 path = "/home/nix/Pictures/Wallpapers/cat_lofi_cafe.jpg"
 
-[wallpaper.last]
-path = "/home/nix/Pictures/Wallpapers/cat_lofi_cafe.jpg"
 
 [wallpaper.monitors.eDP-1]
 path = "/home/nix/Pictures/Wallpapers/cat_lofi_cafe.jpg"
+
+
+[widget.media]
+hide_when_no_media = true
+
+[widget.taskbar]
+group_by_workspace = true
+group_single_icon_per_app = true
+hide_empty_workspaces = true
+only_active_workspace = true
+show_workspace_label = false
+workspace_group_capsule = false
+
+[widget.workspaces]
+active_pill_size = 1.8
