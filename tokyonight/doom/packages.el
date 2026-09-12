@@ -31,11 +31,14 @@
 ;; (package! builtin-package :recipe (:nonrecursive t))
 ;; (package! builtin-package-2 :recipe (:repo "myfork/package"))
 
+(package! md-mode
+  :recipe (:host github :repo "yibie/md-mode"))
+
 (package! org-special-block-extras)
 (package! apheleia)
 (package! ob-mermaid)
 (package! org-modern-indent
-          :recipe (:host github :repo "jdtsmith/org-modern-indent"))
+  :recipe (:host github :repo "jdtsmith/org-modern-indent"))
 
 (package! ht)
 
