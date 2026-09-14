@@ -1,0 +1,140 @@
+/* === Kanagawa Dragon Org HTML Theme === */
+/* Palette reference (base16 — Kanagawa Dragon):
+   base00 (bg):      #181616
+   base01 (surface):  #282727
+   base02 (overlay):  #393836
+   base03 (muted):    #625e5a
+   base04 (subtle):   #737c73
+   base05 (text):     #c5c9c5
+   base06:            #c8c093
+   base07:            #c5c9c5
+   base08 (red):      #c4746e
+   base09 (orange):   #b6927b
+   base0A (yellow):   #c4b28a
+   base0B (green):    #8a9a7b
+   base0C (aqua):     #8ea4a2
+   base0D (blue):     #8ba4b0
+   base0E (purple):   #a292a3
+   base0F (brown):    #b98d7b
+*/
+
+/* === Base layout === */
+body {
+  background-color: #181616; /* base00 */
+  color: #c5c9c5;             /* base05 */
+  font-family: "Fira Sans", "Helvetica", "Arial", sans-serif;
+  line-height: 1.6;
+  max-width: 800px;
+  margin: auto;
+  padding: 2em;
+}
+
+/* === Links === */
+a {
+  color: #8ea4a2; /* base0C - aqua */
+  text-decoration: none;
+}
+a:hover {
+  color: #c4b28a; /* base0A - yellow */
+  text-decoration: underline;
+}
+
+/* === Headings === */
+h1 {
+  color: #8ba4b0; /* base0D - blue */
+  border-bottom: 2px solid #625e5a;
+  padding-bottom: 0.3em;
+}
+h2 {
+  color: #a292a3; /* base0E - purple */
+}
+h3 {
+  color: #8ea4a2; /* base0C - aqua */
+}
+h4 {
+  color: #b6927b; /* base09 - orange */
+}
+h5 {
+  color: #8a9a7b; /* base0B - green */
+}
+h6 {
+  color: #737c73; /* base04 - subtle */
+}
+
+/* === Lists === */
+ul, ol {
+  margin-left: 1.5em;
+}
+
+/* === Blockquotes === */
+blockquote {
+  border-left: 3px solid #737c73;
+  padding-left: 1em;
+  color: #A8B6BA;
+  font-style: italic;
+}
+
+/* === Code blocks === */
+pre {
+  background-color: #282727; /* base01 - surface */
+  color: #c5c9c5;            /* base05 - text */
+  padding: 1em;
+  border-radius: 8px;
+  overflow-x: auto;
+}
+code {
+  background-color: #393836; /* base02 - overlay */
+  color: #c4b28a;            /* base0A - yellow accent */
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+}
+
+/* === Tables === */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1em 0;
+}
+th {
+  background-color: #393836; /* base02 - overlay */
+  color: #c5c9c5;
+  padding: 0.5em;
+  text-align: left;
+}
+td {
+  border: 1px solid #625e5a;
+  padding: 0.5em;
+}
+
+/* === Org special blocks === */
+div.note {
+  border-left: 4px solid #8ea4a2; /* base0C - aqua */
+  padding: 0.5em 1em;
+  margin: 1em 0;
+  background: #282727; /* base01 - surface */
+}
+div.note::before {
+  content: "Note";
+  font-weight: bold;
+  color: #8ea4a2;
+  display: block;
+  margin-bottom: 0.25em;
+  font-size: 0.9em;
+  letter-spacing: 0.05em;
+}
+
+div.warning {
+  border-left: 4px solid #c4746e; /* base08 - red */
+  padding: 0.5em 1em;
+  margin: 1em 0;
+  background: #393836; /* base02 - overlay */
+}
+div.warning::before {
+  content: "Warning";
+  font-weight: bold;
+  color: #c4746e;
+  display: block;
+  margin-bottom: 0.25em;
+  font-size: 0.9em;
+  letter-spacing: 0.05em;
+}

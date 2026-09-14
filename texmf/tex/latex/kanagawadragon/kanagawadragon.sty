@@ -1,0 +1,79 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{kanagawadragon}[2026/09/14 Kanagawa Dragon LaTeX theme]
+
+% Dependencies
+\usepackage{xcolor}
+\usepackage[most]{tcolorbox}
+\usepackage{sectsty}
+\usepackage{listings}
+
+% ------------------------------------------------
+% Kanagawa Dragon Color Palette (base16)
+% Based on the Kanagawa Dragon variant by Tommaso Laurenzi / Stefan Weigl-Bosker
+% ------------------------------------------------
+\definecolor{gb-base}{HTML}{181616}      % Background (base00)
+\definecolor{gb-surface}{HTML}{282727}   % Slightly lighter surface (base01)
+\definecolor{gb-overlay}{HTML}{625E5A}   % Borders / cards (base03)
+\definecolor{gb-muted}{HTML}{737C73}     % Muted text (gray) (base04)
+\definecolor{gb-subtle}{HTML}{C8C093}    % Subtle accents (base06)
+\definecolor{gb-text}{HTML}{C5C9C5}      % Main text (base05)
+\definecolor{gb-red}{HTML}{C4746E}       % Red (base08)
+\definecolor{gb-yellow}{HTML}{C4B28A}    % Yellow (base0A)
+\definecolor{gb-orange}{HTML}{B6927B}    % Orange (base09)
+\definecolor{gb-blue}{HTML}{8BA4B0}      % Blue (base0D)
+\definecolor{gb-aqua}{HTML}{8EA4A2}      % Aqua/cyan (base0C)
+\definecolor{gb-green}{HTML}{8A9A7B}     % Green (base0B)
+\definecolor{gb-purple}{HTML}{A292A3}    % Purple (base0E)
+\definecolor{gb-highlight}{HTML}{625E5A} % Highlight bg (base03)
+
+% ------------------------------------------------
+% Background + text
+% ------------------------------------------------
+\pagecolor{gb-base}
+\color{gb-text}
+
+% ------------------------------------------------
+% Section headings (styled by tone, soft hierarchy)
+% ------------------------------------------------
+\sectionfont{\color{gb-blue}\Huge\bfseries}
+\subsectionfont{\color{gb-purple}\LARGE\bfseries}
+\subsubsectionfont{\color{gb-aqua}\Large\bfseries}
+\paragraphfont{\color{gb-orange}\large\bfseries}
+\subparagraphfont{\color{gb-green}\normalsize\bfseries}
+
+% ------------------------------------------------
+% Note box
+% ------------------------------------------------
+\definecolor{note-bg}{HTML}{282727}
+\definecolor{note-border}{HTML}{8BA4B0}
+
+\newtcolorbox{note}{%
+    colback = note-bg,
+    colframe = note-border,
+    boxrule = 0pt,
+    coltext = gb-text,
+    leftrule = 6pt,
+    arc = 3pt,
+    before upper={%
+        \textbf{\textcolor{gb-aqua}{Note}}\par\medskip
+    },
+    top = 4pt,
+    bottom = 4pt,
+    left = 6pt,
+    right = 6pt,
+    enhanced,
+}
+
+% ------------------------------------------------
+% Code listing style
+% ------------------------------------------------
+\lstset{
+  backgroundcolor=\color{gb-surface},
+  basicstyle=\ttfamily\color{gb-text},
+  keywordstyle=\color{gb-purple}\bfseries,
+  stringstyle=\color{gb-green},
+  commentstyle=\color{gb-muted}\itshape,
+  numberstyle=\tiny\color{gb-subtle},
+  breaklines=true,
+  showstringspaces=false
+}

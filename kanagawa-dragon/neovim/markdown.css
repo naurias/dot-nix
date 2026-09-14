@@ -1,0 +1,149 @@
+/* ── Kanagawa theme for markdown-preview.nvim ────────────────────
+   Dark  (default):  data-theme unset or not "light"
+   Light:            data-theme="light"
+*/
+
+:root {
+  /* Kanagawa Dragon (base16) */
+  --bg: #181616;             /* base00 */
+  --panel: #282727;          /* base01 */
+  --stroke: #393836;         /* base02 */
+  --fg: #c5c9c5;             /* base05 */
+  --fg-muted: #737c73;       /* base04 */
+  --link: #8ba4b0;           /* base0D - blue */
+  --code-bg: #282727;        /* base01 */
+  --blockquote-border: #393836; /* base02 */
+  --table-border: #393836;   /* base02 */
+  --table-row-alt: rgba(197, 201, 197, 0.04);
+  --accent: #c4b28a;         /* base0A - yellow */
+  --badge-bg: rgba(197, 201, 197, 0.06);
+  --badge-fg: #737c73;       /* base04 */
+  --skeleton: rgba(197, 201, 197, 0.05);
+  --skeleton-shine: rgba(197, 201, 197, 0.1);
+  --scroll-thumb: rgba(115, 124, 115, 0.4);
+  --scroll-thumb-hover: rgba(115, 124, 115, 0.65);
+  --color-note: #8ea4a2;     /* base0C - aqua */
+  --color-tip: #8a9a7b;      /* base0B - green */
+  --color-warning: #c4b28a;  /* base0A - yellow */
+  --color-caution: #c4746e;  /* base08 - red */
+  --color-important: #a292a3;/* base0E - purple */
+  --color-h1: #c4746e;       /* base08 */
+  --color-h2: #c4b28a;       /* base0A */
+  --color-h3: #8a9a7b;       /* base0B */
+  --color-h4: #8ba4b0;       /* base0D */
+  --color-h5: #a292a3;       /* base0E */
+  --color-h6: #737c73;       /* base04 */
+}
+
+[data-theme="light"] {
+  --bg: #f2ecbc;
+  --panel: #f9f5d7;
+  --stroke: #d9d0a0;
+  --fg: #2d2a2a;
+  --fg-muted: #7a7a5a;
+  --link: #5a7ba0;
+  --code-bg: #f9f5d7;
+  --blockquote-border: #d9d0a0;
+  --table-border: #d9d0a0;
+  --table-row-alt: rgba(45, 42, 42, 0.04);
+  --accent: #b58a4a;
+  --badge-bg: rgba(45, 42, 42, 0.05);
+  --badge-fg: #7a7a5a;
+  --skeleton: rgba(45, 42, 42, 0.05);
+  --skeleton-shine: rgba(45, 42, 42, 0.1);
+  --scroll-thumb: rgba(122, 122, 90, 0.4);
+  --scroll-thumb-hover: rgba(122, 122, 90, 0.65);
+  --color-note: #5a7ba0;
+  --color-tip: #8a9a5a;
+  --color-warning: #b58a4a;
+  --color-caution: #d46a6a;
+  --color-important: #8a6aa0;
+  --color-h1: #d46a6a;
+  --color-h2: #b58a4a;
+  --color-h3: #8a9a5a;
+  --color-h4: #5a7ba0;
+  --color-h5: #8a6aa0;
+  --color-h6: #7a7a5a;
+}
+
+/* ── Shared styles (same for all themes) ──────────────────────── */
+body,
+#content {
+  font-family: "Ubuntu Sans", "Segoe UI", Arial, freesans, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#content h1 { color: var(--color-h1); }
+#content h2 { color: var(--color-h2); }
+#content h3 { color: var(--color-h3); }
+#content h4 { color: var(--color-h4); }
+#content h5 { color: var(--color-h5); }
+#content h6 { color: var(--color-h6); }
+
+#content strong { color: var(--accent); }
+#content em { color: #c4746e; } /* base08 - red */
+#content del { color: var(--fg-muted); }
+
+#content a:hover { color: #c4746e; } /* base08 - red */
+
+#content ul li::marker,
+#content ol li::marker {
+  color: var(--accent);
+}
+#content ul ul li::marker,
+#content ol ul li::marker,
+#content ul ol li::marker,
+#content ol ol li::marker {
+  color: #8a9a7b; /* base0B - green */
+}
+#content ul ul ul li::marker,
+#content ol ul ul li::marker,
+#content ul ol ul li::marker,
+#content ol ol ul li::marker {
+  color: #a292a3; /* base0E - purple */
+}
+
+#content .task-list-item input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 1.1em;
+  height: 1.1em;
+  border: 2px solid var(--fg-muted);
+  border-radius: 3px;
+  background-color: var(--bg);
+  cursor: pointer;
+  vertical-align: middle;
+  position: relative;
+}
+#content .task-list-item input[type="checkbox"]:hover {
+  border-color: var(--accent);
+}
+#content .task-list-item input[type="checkbox"]:checked {
+  background-color: #8ea4a2; /* base0C - aqua */
+  border-color: #8ea4a2;
+}
+#content .task-list-item input[type="checkbox"]:checked::after {
+  content: "✔";
+  position: absolute;
+  top: -2px;
+  left: 1px;
+  font-size: 0.9em;
+  color: var(--bg);
+}
+
+#content blockquote {
+  background: var(--panel);
+  border-radius: 3px;
+}
+
+#content code {
+  color: #b6927b; /* base09 - orange */
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+#content pre code {
+  color: var(--fg);
+}
+
+#content img {
+  box-shadow: 0 0 10px var(--panel);
+}
