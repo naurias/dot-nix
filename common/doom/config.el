@@ -2,6 +2,7 @@
 ;; extra file
 (load! "style")
 (load! "styx")
+(load! "confs")
 
 ;; ------------------ FONTS --------------------- ;;
 
