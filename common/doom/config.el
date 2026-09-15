@@ -1,5 +1,6 @@
 ;; extra file
 (load! "style")
+(load! "styx")
 
 ;; ------------------ FONTS --------------------- ;;
 
