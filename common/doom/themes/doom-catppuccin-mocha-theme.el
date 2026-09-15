@@ -42,36 +42,43 @@
 ;;; Theme definition
 (def-doom-theme doom-catppuccin-mocha
   "A dark port of the Catppuccin Mocha theme"
+  :family 'doom-catppuccin-mocha
+  :background-mode 'dark
 
   ;; Main theme colors
   (
     ;; name        default   256       16
-    (base           '("#1E1E2E" "#1e1e2e" "black"       )) ; base
-    (surface        '("#181825" "#181825" "brightblack" )) ; mantle
-    (overlay        '("#313244" "#313244" "brightblack" )) ; surface0
-    (muted          '("#6C7086" "#6c7086" "brightblack" )) ; overlay0
-    (subtle         '("#9399B2" "#9399b2" "brightblack" )) ; overlay2
-    (text           '("#CDD6F4" "#cdd6f4" "brightblack" )) ; text
-    (love           '("#F38BA8" "#f38ba8" "red"         )) ; red
-    (gold           '("#F9E2AF" "#f9e2af" "white"       )) ; yellow
-    (rose           '("#F5C2E7" "#f5c2e7" "white"       )) ; pink
-    (pine           '("#89B4FA" "#89b4fa" "white"       )) ; blue
-    (foam           '("#94E2D5" "#94e2d5" "white"       )) ; teal
-    (iris           '("#CBA6F7" "#cba6f7" "white"       )) ; mauve
-    (highlightL     '("#313244" "#313244" "grey"        )) ; surface0
-    (highlightM     '("#45475A" "#45475a" "grey"        )) ; surface1
-    (highlightH     '("#585B70" "#585b70" "grey"        )) ; surface2
+    (base           '("#1E1E2E" "#262626" "black"       )) ; base
+    (surface        '("#181825" "#1c1c1c" "black"       )) ; mantle
+    (overlay        '("#313244" "#3a3a3a" "brightblack" )) ; surface0
+    (muted          '("#6C7086" "#767676" "brightblack" )) ; overlay0
+    (subtle         '("#9399B2" "#8787af" "white"       )) ; overlay2
+    (text           '("#CDD6F4" "#d7d7ff" "brightwhite" )) ; text
+    (love           '("#F38BA8" "#ff87af" "red"         )) ; red
+    (gold           '("#F9E2AF" "#ffd7af" "yellow"      )) ; yellow
+    (rose           '("#F5C2E7" "#ffafd7" "magenta"     )) ; pink
+    (pine           '("#89B4FA" "#87afff" "brightblue"  )) ; blue
+    (foam           '("#94E2D5" "#87d7d7" "brightcyan"  )) ; teal
+    (iris           '("#CBA6F7" "#d7afff" "brightmagenta")) ; mauve
+    (peach          '("#FAB387" "#ffaf87" "brightred"   )) ; peach
+    (leaf           '("#A6E3A1" "#afd7af" "green"       )) ; green
+    (sky            '("#89DCEB" "#87d7d7" "cyan"        )) ; sky
+    (lavender       '("#B4BEFE" "#afafff" "magenta"     )) ; lavender
+    (deep           '("#74C7EC" "#87d7ff" "blue"        )) ; sapphire
+    (highlightL     '("#313244" "#3a3a3a" "brightblack" )) ; surface0
+    (highlightM     '("#45475A" "#4e4e4e" "brightblack" )) ; surface1
+    (highlightH     '("#585B70" "#626262" "brightblack" )) ; surface2
 
     ;; Variables required by doom theme
     ;; These are required by doom theme and used in various places
     (bg             base)
-    (fg             text)
+    (fg             (if doom-catppuccin-mocha-brighter-text (doom-lighten text 0.2) text))
     ;; These are off-color variants of bg/fg, used primarily for `solaire-mode',
     ;; but can also be useful as a basis for subtle highlights (e.g. for hl-line
     ;; or region), especially when paired with the `doom-darken', `doom-lighten',
     ;; and `doom-blend' helper functions.
     (bg-alt         surface)
-    (fg-alt         text)
+    (fg-alt         (if doom-catppuccin-mocha-brighter-text (doom-lighten text 0.2) text))
     ;; These should represent a spectrum from bg to fg, where base0 is a starker
     ;; bg and base8 is a starker fg. For example, if bg is light grey and fg is
     ;; dark grey, base0 should be white and base8 should be black.
@@ -86,43 +93,43 @@
     (base8          text)
     (grey           muted)
     (red            love)
-    (orange         gold)
-    (green          pine)
-    (teal           pine)
-    (yellow         rose)
+    (orange         peach)
+    (green          leaf)
+    (teal           foam)
+    (yellow         gold)
     (blue           pine)
-    (dark-blue      pine)
+    (dark-blue      deep)
     (magenta        iris)
-    (violet         iris)
-    (cyan           foam)
+    (violet         lavender)
+    (cyan           sky)
     (dark-cyan      foam)
     ;; Variables required by doom theme ends here
 
     ;; Required face categories for syntax highlighting
-    (highlight      subtle)   ; cursor
-    (selection      base)     ; can't figure out where this is used
-    (region         overlay)  ; visual selection
+    (highlight      subtle)
+    (selection      highlightM)
+    (region         highlightM)  ; visual selection
     (vertical-bar   surface)  ; window split
 
     (comments       (if doom-catppuccin-mocha-brighter-comments subtle muted))
     (doc-comments   (if doom-catppuccin-mocha-brighter-comments subtle muted))
 
     (builtin        pine)
-    (constants      iris)
+    (constants      peach)
     (functions      pine)
-    (keywords       pine)
+    (keywords       iris)
     (methods        foam)
-    (numbers        rose)
-    (operators      gold)
-    (strings        gold)
-    (type           rose)
-    (variables      iris)
+    (numbers        peach)
+    (operators      sky)
+    (strings        leaf)
+    (type           gold)
+    (variables      lavender)
 
     (error          love)
-    (success        foam)
+    (success        leaf)
     (warning        gold)
 
-    (vc-added       foam)
+    (vc-added       leaf)
     (vc-deleted     love)
     (vc-modified    gold)
 
@@ -136,9 +143,9 @@
     (modeline-fg-inactive        subtle)
     (modeline-bg-inactive-alt    base)
     (modeline-fg-inactive-alt    subtle)
-    (modeline-pad
+    (-modeline-pad
       (when doom-catppuccin-mocha-padded-modeline
-        if (integerp doom-catppuccin-mocha-padded-modeline) doom-catppuccin-mocha-padded-modeline 4)))
+        (if (integerp doom-catppuccin-mocha-padded-modeline) doom-catppuccin-mocha-padded-modeline 4))))
 
   ;; Base theme face overrides
   (
@@ -164,16 +171,16 @@
     (mode-line
       :background modeline-bg
       :foreground modeline-fg
-      :box (if modeline-pad `(:line-width ,modeline-pad :color ,modeline-bg)))
+      :box (if -modeline-pad `(:line-width ,-modeline-pad :color ,modeline-bg)))
     (mode-line-inactive
       :background modeline-bg-inactive
       :foreground modeline-fg-inactive
-      :box (if modeline-pad `(:line-width ,modeline-pad :color ,modeline-bg-inactive)))
+      :box (if -modeline-pad `(:line-width ,-modeline-pad :color ,modeline-bg-inactive)))
     (mode-line-emphasis
       :foreground (if doom-catppuccin-mocha-brighter-modeline text subtle))
 
     ;; Company
-    (company-tooltip-selection :background blue :foreground muted)
+    (company-tooltip-selection :background selection :foreground fg :weight 'bold)
 
     ;; CSS mode <built-in> / scss-mode
     (css-proprietary-property :foreground orange)
@@ -188,7 +195,7 @@
     (doom-modeline-evil-insert-state :foreground orange)   ; The dot color when in insert mode
 
     ;; Helm
-    (helm-selection :foreground base :weight 'bold :background blue)
+    (helm-selection :background selection :foreground fg :weight 'bold)
 
     ;; Ivy
     (ivy-current-match :background overlay :distant-foreground fg)
@@ -206,7 +213,6 @@
 
     ;; org <built-in>
     (org-block :background (doom-blend yellow bg 0.04) :extend t)
-    (org-block-background :background (doom-blend yellow bg 0.04))
     (org-block-begin-line :background (doom-blend yellow bg 0.04) :foreground comments :extend t)
     (org-block-end-line :background (doom-blend yellow bg 0.04) :foreground comments :extend t)
     (org-level-1 :foreground gold)
@@ -222,15 +228,15 @@
     (solaire-mode-line-face
       :inherit 'mode-line
       :background modeline-bg-alt
-      :box (if modeline-pad `(:line-width ,modeline-pad :color ,modeline-bg-alt)))
+      :box (if -modeline-pad `(:line-width ,-modeline-pad :color ,modeline-bg-alt)))
     (solaire-mode-line-inactive-face
       :inherit 'mode-line-inactive
       :background modeline-bg-inactive-alt
-      :box (if modeline-pad `(:line-width ,modeline-pad :color ,modeline-bg-inactive-alt)))
+      :box (if -modeline-pad `(:line-width ,-modeline-pad :color ,modeline-bg-inactive-alt)))
 
     ;; Widget
-    (widget-field :foreground fg :background muted)
-    (widget-single-line-field :foreground fg :background muted)
+    (widget-field :foreground fg :background bg-alt)
+    (widget-single-line-field :foreground fg :background bg-alt)
 
     ;; Swiper
     (swiper-match-face-1 :inherit 'ivy-minibuffer-match-face-1)

@@ -42,36 +42,40 @@
 ;;; Theme definition
 (def-doom-theme doom-kanagawa-dragon
   "A dark port of the Kanagawa (Dragon) theme"
+  :family 'doom-kanagawa-dragon
+  :background-mode 'dark
 
   ;; Main theme colors
   (
     ;; name        default   256       16
-    (base           '("#181616" "#181616" "black"       )) ; base00
-    (surface        '("#282727" "#282727" "brightblack" )) ; base01
-    (overlay        '("#393836" "#393836" "brightblack" )) ; base02
-    (muted          '("#625E5A" "#625e5a" "brightblack" )) ; base03
-    (subtle         '("#737C73" "#737c73" "brightblack" )) ; base04
-    (text           '("#C5C9C5" "#c5c9c5" "brightblack" )) ; base05
-    (love           '("#C4746E" "#c4746e" "red"         )) ; base08
-    (gold           '("#C4B28A" "#c4b28a" "white"       )) ; base0A
-    (rose           '("#B98D7B" "#b98d7b" "white"       )) ; base0F
-    (pine           '("#8BA4B0" "#8ba4b0" "white"       )) ; base0D
-    (foam           '("#8EA4A2" "#8ea4a2" "white"       )) ; base0C
-    (iris           '("#A292A3" "#a292a3" "white"       )) ; base0E
-    (highlightL     '("#212122" "#212122" "grey"        )) ; base00 blended toward base0D
-    (highlightM     '("#313538" "#313538" "grey"        )) ; base00 blended toward base0D
-    (highlightH     '("#464F54" "#464f54" "grey"        )) ; base00 blended toward base0D
+    (base           '("#181616" "#121212" "black"       )) ; dragonBlack3
+    (surface        '("#282727" "#262626" "black"       )) ; dragonBlack4
+    (overlay        '("#393836" "#3a3a3a" "brightblack" )) ; dragonBlack5
+    (muted          '("#625E5A" "#5f5f5f" "brightblack" )) ; dragonBlack6
+    (subtle         '("#737C73" "#767676" "white"       )) ; dragonAsh
+    (text           '("#C5C9C5" "#c6c6c6" "brightwhite" )) ; dragonWhite
+    (love           '("#C4746E" "#d7875f" "red"         )) ; dragonRed
+    (gold           '("#C4B28A" "#d7af87" "yellow"      )) ; dragonYellow
+    (rose           '("#B98D7B" "#af8787" "magenta"     )) ; dragonOrange2
+    (pine           '("#8BA4B0" "#87afaf" "brightblue"  )) ; dragonBlue2
+    (foam           '("#8EA4A2" "#9e9e9e" "brightcyan"  )) ; dragonAqua
+    (iris           '("#A292A3" "#9e9e9e" "brightmagenta")) ; dragonPink
+    (moss           '("#8A9A7B" "#8a8a8a" "green"       )) ; dragonGreen2
+    (frost          '("#8992A7" "#8787af" "magenta"     )) ; dragonViolet
+    (highlightL     '("#1D1C19" "#1c1c1c" "brightblack" )) ; dragonBlack2
+    (highlightM     '("#223249" "#303030" "brightblack" )) ; waveBlue1 visual
+    (highlightH     '("#2D4F67" "#4e4e4e" "brightblack" )) ; waveBlue2 search
 
     ;; Variables required by doom theme
     ;; These are required by doom theme and used in various places
     (bg             base)
-    (fg             text)
+    (fg             (if doom-kanagawa-dragon-brighter-text (doom-lighten text 0.2) text))
     ;; These are off-color variants of bg/fg, used primarily for `solaire-mode',
     ;; but can also be useful as a basis for subtle highlights (e.g. for hl-line
     ;; or region), especially when paired with the `doom-darken', `doom-lighten',
     ;; and `doom-blend' helper functions.
     (bg-alt         surface)
-    (fg-alt         text)
+    (fg-alt         (if doom-kanagawa-dragon-brighter-text (doom-lighten text 0.2) text))
     ;; These should represent a spectrum from bg to fg, where base0 is a starker
     ;; bg and base8 is a starker fg. For example, if bg is light grey and fg is
     ;; dark grey, base0 should be white and base8 should be black.
@@ -86,43 +90,43 @@
     (base8          text)
     (grey           muted)
     (red            love)
-    (orange         gold)
-    (green          pine)
-    (teal           pine)
-    (yellow         rose)
+    (orange         rose)
+    (green          moss)
+    (teal           foam)
+    (yellow         gold)
     (blue           pine)
     (dark-blue      pine)
     (magenta        iris)
-    (violet         iris)
+    (violet         frost)
     (cyan           foam)
     (dark-cyan      foam)
     ;; Variables required by doom theme ends here
 
     ;; Required face categories for syntax highlighting
-    (highlight      subtle)   ; cursor
-    (selection      base)     ; can't figure out where this is used
-    (region         overlay)  ; visual selection
+    (highlight      subtle)
+    (selection      highlightM)
+    (region         highlightM)  ; visual selection
     (vertical-bar   surface)  ; window split
 
     (comments       (if doom-kanagawa-dragon-brighter-comments subtle muted))
     (doc-comments   (if doom-kanagawa-dragon-brighter-comments subtle muted))
 
     (builtin        pine)
-    (constants      iris)
+    (constants      rose)
     (functions      pine)
-    (keywords       pine)
+    (keywords       frost)
     (methods        foam)
-    (numbers        rose)
-    (operators      gold)
-    (strings        gold)
-    (type           rose)
-    (variables      iris)
+    (numbers        iris)
+    (operators      love)
+    (strings        moss)
+    (type           foam)
+    (variables      gold)
 
     (error          love)
-    (success        foam)
+    (success        moss)
     (warning        gold)
 
-    (vc-added       foam)
+    (vc-added       moss)
     (vc-deleted     love)
     (vc-modified    gold)
 
@@ -136,9 +140,9 @@
     (modeline-fg-inactive        subtle)
     (modeline-bg-inactive-alt    base)
     (modeline-fg-inactive-alt    subtle)
-    (modeline-pad
+    (-modeline-pad
       (when doom-kanagawa-dragon-padded-modeline
-        if (integerp doom-kanagawa-dragon-padded-modeline) doom-kanagawa-dragon-padded-modeline 4)))
+        (if (integerp doom-kanagawa-dragon-padded-modeline) doom-kanagawa-dragon-padded-modeline 4))))
 
   ;; Base theme face overrides
   (
@@ -164,16 +168,16 @@
     (mode-line
       :background modeline-bg
       :foreground modeline-fg
-      :box (if modeline-pad `(:line-width ,modeline-pad :color ,modeline-bg)))
+      :box (if -modeline-pad `(:line-width ,-modeline-pad :color ,modeline-bg)))
     (mode-line-inactive
       :background modeline-bg-inactive
       :foreground modeline-fg-inactive
-      :box (if modeline-pad `(:line-width ,modeline-pad :color ,modeline-bg-inactive)))
+      :box (if -modeline-pad `(:line-width ,-modeline-pad :color ,modeline-bg-inactive)))
     (mode-line-emphasis
       :foreground (if doom-kanagawa-dragon-brighter-modeline text subtle))
 
     ;; Company
-    (company-tooltip-selection :background blue :foreground muted)
+    (company-tooltip-selection :background selection :foreground fg :weight 'bold)
 
     ;; CSS mode <built-in> / scss-mode
     (css-proprietary-property :foreground orange)
@@ -188,7 +192,7 @@
     (doom-modeline-evil-insert-state :foreground orange)   ; The dot color when in insert mode
 
     ;; Helm
-    (helm-selection :foreground base :weight 'bold :background blue)
+    (helm-selection :background selection :foreground fg :weight 'bold)
 
     ;; Ivy
     (ivy-current-match :background overlay :distant-foreground fg)
@@ -206,7 +210,6 @@
 
     ;; org <built-in>
     (org-block :background (doom-blend yellow bg 0.04) :extend t)
-    (org-block-background :background (doom-blend yellow bg 0.04))
     (org-block-begin-line :background (doom-blend yellow bg 0.04) :foreground comments :extend t)
     (org-block-end-line :background (doom-blend yellow bg 0.04) :foreground comments :extend t)
     (org-level-1 :foreground gold)
@@ -222,15 +225,15 @@
     (solaire-mode-line-face
       :inherit 'mode-line
       :background modeline-bg-alt
-      :box (if modeline-pad `(:line-width ,modeline-pad :color ,modeline-bg-alt)))
+      :box (if -modeline-pad `(:line-width ,-modeline-pad :color ,modeline-bg-alt)))
     (solaire-mode-line-inactive-face
       :inherit 'mode-line-inactive
       :background modeline-bg-inactive-alt
-      :box (if modeline-pad `(:line-width ,modeline-pad :color ,modeline-bg-inactive-alt)))
+      :box (if -modeline-pad `(:line-width ,-modeline-pad :color ,modeline-bg-inactive-alt)))
 
     ;; Widget
-    (widget-field :foreground fg :background muted)
-    (widget-single-line-field :foreground fg :background muted)
+    (widget-field :foreground fg :background bg-alt)
+    (widget-single-line-field :foreground fg :background bg-alt)
 
     ;; Swiper
     (swiper-match-face-1 :inherit 'ivy-minibuffer-match-face-1)

@@ -43,36 +43,38 @@
 ;;; Theme definition
 (def-doom-theme doom-rose-pine-moon
   "A medium port of Rosé Pine Moon theme"
+  :family 'doom-rose-pine-moon
+  :background-mode 'dark
 
   ;; Main theme colors
   (
     ;; name        default   256       16
-    (base           '("#232136" "#232136" "black"       ))
-    (surface        '("#2a273f" "#2a273f" "brightblack" ))
-    (overlay        '("#393552" "#393552" "brightblack" ))
-    (muted          '("#6e6a86" "#6e6a86" "brightblack" ))
-    (subtle         '("#908caa" "#908caa" "brightblack" ))
-    (text           '("#e0def4" "#e0def4" "brightblack" ))
-    (love           '("#eb6f92" "#eb6f92" "red"         ))
-    (gold           '("#f6c177" "#f6c177" "white"       ))
-    (rose           '("#ea9a97" "#ea9a97" "white"       ))
-    (pine           '("#3e8fb0" "#3e8fb0" "white"       ))
-    (foam           '("#9ccfd8" "#9ccfd8" "white"       ))
-    (iris           '("#c4a7e7" "#c4a7e7" "white"       ))
-    (highlightL     '("#2a283e" "#2a283e" "white"       ))
-    (highlightM     '("#44415a" "#44415a" "white"       ))
-    (highlightH     '("#56526e" "#56526e" "white"       ))
+    (base           '("#232136" "#262626" "black"       ))
+    (surface        '("#2a273f" "#303030" "black"       ))
+    (overlay        '("#393552" "#444444" "brightblack" ))
+    (muted          '("#6e6a86" "#5f5f87" "brightblack" ))
+    (subtle         '("#908caa" "#8787af" "white"       ))
+    (text           '("#e0def4" "#d7d7ff" "brightwhite" ))
+    (love           '("#eb6f92" "#d75f87" "red"         ))
+    (gold           '("#f6c177" "#ffaf87" "yellow"      ))
+    (rose           '("#ea9a97" "#d78787" "magenta"     ))
+    (pine           '("#3e8fb0" "#5f87af" "brightblue"  ))
+    (foam           '("#9ccfd8" "#afd7d7" "brightcyan"  ))
+    (iris           '("#c4a7e7" "#d7afd7" "brightmagenta"))
+    (highlightL     '("#2a283e" "#303030" "brightblack" ))
+    (highlightM     '("#44415a" "#4e4e4e" "brightblack" ))
+    (highlightH     '("#56526e" "#5f5f5f" "brightblack" ))
 
     ;; Variables required by doom theme
     ;; These are required by doom theme and used in various places
     (bg             base)
-    (fg             text)
+    (fg             (if doom-rose-pine-moon-brighter-text (doom-lighten text 0.2) text))
     ;; These are off-color variants of bg/fg, used primarily for `solaire-mode',
     ;; but can also be useful as a basis for subtle highlights (e.g. for hl-line
     ;; or region), especially when paired with the `doom-darken', `doom-lighten',
     ;; and `doom-blend' helper functions.
     (bg-alt         surface)
-    (fg-alt         text)
+    (fg-alt         (if doom-rose-pine-moon-brighter-text (doom-lighten text 0.2) text))
     ;; These should represent a spectrum from bg to fg, where base0 is a starker
     ;; bg and base8 is a starker fg. For example, if bg is light grey and fg is
     ;; dark grey, base0 should be white and base8 should be black.
@@ -101,18 +103,18 @@
     ;; Variables required by doom theme ends here
 
     ;; Required face categories for syntax highlighting
-    (highlight       subtle)   ; cursor
-    (selection       base)     ; can't figure out where this is used
-    (region          overlay)  ; visual selection
+    (highlight       subtle)
+    (selection       highlightM)
+    (region          highlightM)  ; visual selection
     (vertical-bar    surface)  ; window split
 
     (comments        (if doom-rose-pine-moon-brighter-comments subtle muted))
     (doc-comments    (if doom-rose-pine-moon-brighter-comments subtle muted))
 
-    (builtin         pine)
+    (builtin         love)
     (constants       iris)
     (functions       pine)
-    (keywords        pine)
+    (keywords        iris)
     (methods         foam)
     (numbers         rose)
     (operators       gold)
@@ -138,9 +140,9 @@
     (modeline-fg-inactive        subtle)
     (modeline-bg-inactive-alt    base)
     (modeline-fg-inactive-alt    subtle)
-    (modeline-pad
+    (-modeline-pad
       (when doom-rose-pine-moon-padded-modeline
-        if (integerp doom-rose-pine-moon-padded-modeline) doom-rose-pine-padded-modeline 4)))
+        (if (integerp doom-rose-pine-moon-padded-modeline) doom-rose-pine-moon-padded-modeline 4))))
 
   ;; Base theme face overrides
   (
@@ -166,16 +168,16 @@
     (mode-line
       :background modeline-bg
       :foreground modeline-fg
-      :box (if modeline-pad `(:line-width ,modeline-pad :color ,modeline-bg)))
+      :box (if -modeline-pad `(:line-width ,-modeline-pad :color ,modeline-bg)))
     (mode-line-inactive
       :background modeline-bg-inactive
       :foreground modeline-fg-inactive
-      :box (if modeline-pad `(:line-width ,modeline-pad :color ,modeline-bg-inactive)))
+      :box (if -modeline-pad `(:line-width ,-modeline-pad :color ,modeline-bg-inactive)))
     (mode-line-emphasis
       :foreground (if doom-rose-pine-moon-brighter-modeline text subtle))
 
     ;; Company
-    (company-tooltip-selection :background blue :foreground muted)
+    (company-tooltip-selection :background selection :foreground fg :weight 'bold)
 
     ;; CSS mode <built-in> / scss-mode
     (css-proprietary-property :foreground orange)
@@ -190,7 +192,7 @@
     (doom-modeline-evil-insert-state :foreground orange)   ; The dot color when in insert mode
 
     ;; Helm
-    (helm-selection :foreground base :weight 'bold :background blue)
+    (helm-selection :background selection :foreground fg :weight 'bold)
 
     ;; Ivy
     (ivy-current-match :background overlay :distant-foreground fg)
@@ -208,7 +210,6 @@
 
     ;; org <built-in>
     (org-block :background (doom-blend yellow bg 0.04) :extend t)
-    (org-block-background :background (doom-blend yellow bg 0.04))
     (org-block-begin-line :background (doom-blend yellow bg 0.08) :foreground comments :extend t)
     (org-block-end-line :background (doom-blend yellow bg 0.08) :foreground comments :extend t)
     (org-level-1 :foreground gold)
@@ -224,15 +225,15 @@
     (solaire-mode-line-face
       :inherit 'mode-line
       :background modeline-bg-alt
-      :box (if modeline-pad `(:line-width ,modeline-pad :color ,modeline-bg-alt)))
+      :box (if -modeline-pad `(:line-width ,-modeline-pad :color ,modeline-bg-alt)))
     (solaire-mode-line-inactive-face
       :inherit 'mode-line-inactive
       :background modeline-bg-inactive-alt
-      :box (if modeline-pad `(:line-width ,modeline-pad :color ,modeline-bg-inactive-alt)))
+      :box (if -modeline-pad `(:line-width ,-modeline-pad :color ,modeline-bg-inactive-alt)))
 
     ;; Widget
-    (widget-field :foreground fg :background muted)
-    (widget-single-line-field :foreground fg :background muted)
+    (widget-field :foreground fg :background bg-alt)
+    (widget-single-line-field :foreground fg :background bg-alt)
 
     ;; Swiper
     (swiper-line-face :background highlightM)
