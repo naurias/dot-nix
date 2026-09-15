@@ -1,3 +1,4 @@
+
 ;; extra file
 (load! "style")
 (load! "styx")
@@ -46,93 +47,51 @@
   '(org-quote :extend t :slant italic :family "Cascadia Code")
   )
 
-;; org-roam directories
+;; org-roam dynamic capture — one template; folders auto-created on demand.
+(defvar styx/roam--last-dir "Notes"
+  "Last used roam subdirectory, offered as default at capture.")
+
+(defun styx/roam--subdirs ()
+  "Relative subdirectories of `org-roam-directory' for completion."
+  (let ((root (expand-file-name org-roam-directory)))
+    (when (file-directory-p root)
+      (mapcar (lambda (d) (file-relative-name d root))
+              (seq-remove (lambda (d) (string-match-p "/\\." d))
+                          (seq-filter #'file-directory-p
+                                      (directory-files-recursively
+                                       root "" t)))))))
+
+(defun styx/roam-target ()
+  "Return capture file \"DIR/<slug>.org\", prompting for DIR once.
+New (nested) directories are created automatically."
+  (let ((dir (or (plist-get org-roam-capture--info :styx-dir)
+                 (let ((choice (completing-read
+                                (format "Roam folder (default %s): "
+                                        styx/roam--last-dir)
+                                (styx/roam--subdirs)
+                                nil nil nil nil styx/roam--last-dir)))
+                   (when (string-empty-p choice)
+                     (setq choice styx/roam--last-dir))
+                   (setq styx/roam--last-dir choice)
+                   (setq org-roam-capture--info
+                         (plist-put org-roam-capture--info :styx-dir choice))
+                   choice))))
+    (make-directory (expand-file-name dir org-roam-directory) t)
+    (concat (file-name-as-directory dir)
+            (org-roam-node-slug org-roam-capture--node)
+            ".org")))
+
 (setq org-roam-capture-templates
-      '(
-        ("d" "default" plain "%?"
+      '(("d" "default" plain "%?"
          :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org"
                             "#+title: ${title}\n")
          :unnarrowed t)
 
-        ("n" "Notes" plain "%?"
-         :if-new (file+head "Notes/${slug}.org"
+        ("r" "roam" plain "%?"
+         :if-new (file+head styx/roam-target
                             "#+title: ${title}\n")
          :immediate-finish t
-         :jump-to-captured t
-         )
-
-        ("c" "CSS")
-        ("cd" "default" plain "%?"
-         :if-new (file+head "CSS/${slug}.org"
-                            "#+title: ${title}\n")
-         :immediate-finish t
-         :jump-to-captured t
-        )
-
-        ("ce" "English" plain "%?"
-         :if-new (file+head "CSS/English/${slug}.org"
-                            "#+title: ${title}\n")
-         :immediate-finish t
-         :jump-to-captured t
-        )
-
-        ("ci" "Islamic-Studies" plain "%?"
-         :if-new (file+head "CSS/Islamic-Studies/${slug}.org"
-                            "#+title: ${title}\n")
-         :immediate-finish t
-         :jump-to-captured t
-        )
-
-        ("cc" "Current-Affairs" plain "%?"
-         :if-new (file+head "CSS/Current-Affairs/${slug}.org"
-                            "#+title: ${title}\n")
-         :immediate-finish t
-         :jump-to-captured t
-        )
-
-;;        ("cg" "GSA" plain "%?"
-;;         :if-new (file+head "CSS/GSA/${slug}.org"
-;;                            "#+title: ${title}\n")
-;;         :immediate-finish t
-;;         :jump-to-captured t
-;;        )
-        ("cg" "GSA")
-        ("cgd" "GSA default" plain "%?"
-         :if-new (file+head "CSS/GSA/${slug}.org"
-                            "#+title: ${title}\n")
-         :immediate-finish t
-         :jump-to-captured t
-         )
-
-        ("cgp" "Physics" plain "%?"
-         :if-new (file+head "CSS/GSA/Physics/${slug}.org"
-                            "#+title: ${title}\n")
-         :immediate-finish t
-         :jump-to-captured t
-         )
-
-        ("cgm" "GSA default" plain "%?"
-         :if-new (file+head "CSS/GSA/Maths/${slug}.org"
-                            "#+title: ${title}\n")
-         :immediate-finish t
-         :jump-to-captured t
-         )
-
-        ("cm" "Maths" plain "%?"
-         :if-new (file+head "CSS/Maths/${slug}.org"
-                            "#+title: ${title}\n")
-         :immediate-finish t
-         :jump-to-captured t
-        )
-
-        ("cp" "Pak-Affairs" plain "%?"
-         :if-new (file+head "CSS/Pak-Affairs/${slug}.org"
-                            "#+title: ${title}\n")
-         :immediate-finish t
-         :jump-to-captured t
-        )
-
-        ))
+         :jump-to-captured t)))
 
 
 
