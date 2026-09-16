@@ -1,0 +1,11 @@
+config-file = ~/.config/ghostty/theme.ghostty
+font-family = FiraCode Nerd Font Propo
+font-family-bold = FiraCode Nerd Font Propo Bold 
+font-family-italic = Cascadia Code NF
+font-family-bold-italic = Cascadia Code NF
+font-size = 14
+background-opacity = 0.9
+background-blur = 3
+window-decoration = auto 
+window-show-tab-bar = auto 
+
