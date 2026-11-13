@@ -18,6 +18,7 @@ hardware config and host/user setup live in the nixidite README
 | `gruvbox/noctalia/` | Noctalia `settings.toml` + Kvantum templates (single source; Kvantum themes are rendered from these at build time) | auto-seeded + generated; all 10 palettes installed, selected via `theme-switch` |
 | `ohmyposh/` | Prompt configs (`main.toml`, `second.toml`) | auto-seeded; live prompt is the generated `active.toml` |
 | `hypr/extra.lua` | Hyprland keybinds/animations/layout | symlinked by the flake (`~/.config/hypr/extra.lua`) |
+| `umbriel/config.toml` | Umbriel outputs, input, keybinds, layout, window/layer rules; optionally includes the generated `~/.config/umbriel/theme.toml` | installed by the flake via `programs.umbriel.settings` |
 | `fzftab/` | fzf-tab zsh plugin | symlinked by the flake |
 | `mango/` (`autostart.sh`, `config.conf`), `niri/config.kdl` | MangoWC / Niri compositor configs | symlinked by the flake (aspects currently disabled = dormant) |
 | `common/ghostty/config.ghostty` | Ghostty fonts (incl. Nerd-Font italics fix) | **manual copy** → `~/.config/ghostty/config.ghostty` |
@@ -54,7 +55,9 @@ theme-switch kanagawa-dragon
 ```
 
 Verify checklist: kitty + ghostty colors/fonts (open new windows), Hyprland borders
-(`hyprctl reload` is automatic), Noctalia bar + palette, nvim `:colorscheme`,
+(`hyprctl reload` is automatic), Umbriel borders/overview (`theme-switch` calls
+`umbriel config-replace`; `umbriel config validate` should report ok), Noctalia
+bar + palette, nvim `:colorscheme`,
 Emacs `doom-theme`, yazi/bat/fzf in a new shell, GTK apps, Dolphin + pcmanfm-qt
 icons (restart them once), `kvantumanager` preview for Qt.
 
