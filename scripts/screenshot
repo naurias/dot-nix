@@ -1,0 +1,42 @@
+#!/bin/sh
+# Screenshot helper shared by Hyprland and Umbriel.
+#
+#   screenshot full     whole output layout
+#   screenshot area     interactive slurp selection
+#   screenshot window   focused window
+#
+# Files are saved next to the Niri convention:
+#   ~/Pictures/Screenshots/Screenshot from <date>.png
+set -eu
+
+mode="${1:-full}"
+dir="${SCREENSHOT_DIR:-$HOME/Pictures/Screenshots}"
+file="$dir/Screenshot from $(date '+%Y-%m-%d %H-%M-%S').png"
+
+mkdir -p "$dir"
+
+case "$mode" in
+  full)
+    grim "$file"
+    ;;
+  area)
+    region="$(slurp)" || exit 0
+    [ -n "$region" ] || exit 0
+    grim -g "$region" "$file"
+    ;;
+  window)
+    if [ -n "${UMBRIEL_SOCKET:-}" ]; then
+      region="$(umbriel focused-window --json | jq -r '"\(.x),\(.y) \(.w)x\(.h)"')"
+    else
+      region="$(hyprctl activewindow -j | jq -r '"\(.at[0]),\(.at[1]) \(.size[0])x\(.size[1])"')"
+    fi
+    [ -n "$region" ] || exit 1
+    grim -g "$region" "$file"
+    ;;
+  *)
+    echo "usage: screenshot {full|area|window}" >&2
+    exit 2
+    ;;
+esac
+
+printf '%s\n' "$file"

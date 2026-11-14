@@ -110,8 +110,11 @@ disable_while_typing = true
 
 # Window state and layout
 "Mod+S" = { action = "window-toggle-floating", repeat = false }
-"Mod+P" = { action = "window-toggle-pinned", repeat = false }
 "Mod+T" = { action = "window-toggle-pinned", repeat = false }
+# Screenshots (grim + slurp via the shared dot-nix helper)
+"Mod+P" = { action = "spawn screenshot full", repeat = false }
+"Mod+Shift+P" = { action = "spawn screenshot area", repeat = false }
+"Mod+Alt+P" = { action = "spawn screenshot window", repeat = false }
 "Mod+M" = { action = "window-toggle-maximize-to-edges", repeat = false }
 "Mod+F" = { action = "window-toggle-fullscreen", repeat = false }
 "Mod+Ctrl+F" = { action = "window-toggle-maximize", repeat = false }

@@ -19,6 +19,7 @@ hardware config and host/user setup live in the nixidite README
 | `ohmyposh/` | Prompt configs (`main.toml`, `second.toml`) | auto-seeded; live prompt is the generated `active.toml` |
 | `hypr/extra.lua` | Hyprland keybinds/animations/layout | symlinked by the flake (`~/.config/hypr/extra.lua`) |
 | `umbriel/config.toml` | Umbriel outputs, input, keybinds, layout, window/layer rules; optionally includes the generated `~/.config/umbriel/theme.toml` | installed by the flake via `programs.umbriel.settings` |
+| `scripts/screenshot` | Shared grim/slurp helper (`full`, `area`, `window`) used by the Hyprland and Umbriel screenshot keys | installed as `screenshot` by the flake |
 | `fzftab/` | fzf-tab zsh plugin | symlinked by the flake |
 | `mango/` (`autostart.sh`, `config.conf`), `niri/config.kdl` | MangoWC / Niri compositor configs | symlinked by the flake (aspects currently disabled = dormant) |
 | `common/ghostty/config.ghostty` | Ghostty fonts (incl. Nerd-Font italics fix) | **manual copy** → `~/.config/ghostty/config.ghostty` |
@@ -59,7 +60,8 @@ Verify checklist: kitty + ghostty colors/fonts (open new windows), Hyprland bord
 `umbriel config-replace`; `umbriel config validate` should report ok), Noctalia
 bar + palette, nvim `:colorscheme`,
 Emacs `doom-theme`, yazi/bat/fzf in a new shell, GTK apps, Dolphin + pcmanfm-qt
-icons (restart them once), `kvantumanager` preview for Qt.
+icons (restart them once), `kvantumanager` preview for Qt. Screenshot keys
+(`Mod+P`, `Mod+Shift+P`, `Mod+Alt+P`) should save under `~/Pictures/Screenshots`.
 
 ## What does NOT transfer (do these by hand)
 
