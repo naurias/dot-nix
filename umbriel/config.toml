@@ -97,16 +97,18 @@ disable_while_typing = true
 "Mod+J" = "window-focus-down"
 "Mod+K" = "window-focus-up"
 "Mod+L" = "window-focus-right"
-"Mod+Q" = "window-focus-up"
-"Mod+E" = "window-focus-down"
-"Mod+Z" = "window-focus-left"
-"Mod+X" = "window-focus-right"
+"Mod+Z" = "window-focus-up"
+"Mod+X" = "window-focus-down"
+"Mod+Q" = "window-focus-left"
+"Mod+E" = "window-focus-right"
 "Mod+F1" = "window-focus-next"
 "Mod+Tab" = "window-focus-next"
 "Mod+Shift+Left" = "column-move-left"
+"Mod+Shift+Q" = "column-move-left"
 "Mod+Shift+Down" = "window-move-down"
 "Mod+Shift+Up" = "window-move-up"
 "Mod+Shift+Right" = "column-move-right"
+"Mod+Shift+E" = "column-move-right"
 
 # Window state and layout
 "Mod+S" = { action = "window-toggle-floating", repeat = false }
@@ -118,6 +120,7 @@ disable_while_typing = true
 "Mod+M" = { action = "window-toggle-maximize-to-edges", repeat = false }
 "Mod+F" = { action = "window-toggle-fullscreen", repeat = false }
 "Mod+Ctrl+F" = { action = "window-toggle-maximize", repeat = false }
+# Tab group toggle, equivalent to Hyprland's SUPER+G group toggle
 "Mod+G" = { action = "column-toggle-tabbed", repeat = false }
 "Mod+R" = "window-cycle-primary-extent"
 "Mod+Shift+R" = "window-cycle-primary-extent-back"
@@ -138,6 +141,8 @@ disable_while_typing = true
 "Mod+WheelUp" = "window-focus-left"
 "Mod+WheelDown" = "window-focus-right"
 "Mod+O" = { action = "overview-toggle", repeat = false }
+# Layout toggle: master (default) <-> scrolling for the active workspace
+"Mod+Shift+O" = "workspace-set-layout toggle master scrolling"
 
 # Workspaces
 "Mod+1" = "workspace-switch 1"
@@ -172,7 +177,12 @@ disable_while_typing = true
 # Layout
 
 [layout]
+mode = "master"
 extent_presets = [0.333, 0.5, 0.667]
+
+# Match the current Hyprland master behavior: new windows become master.
+[layout.master]
+new_becomes_master = true
 
 [layout.scrolling]
 default_extent_fraction = 0.5
